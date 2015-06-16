@@ -1,0 +1,28 @@
+{
+  "name": "network",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/makerHire/network/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^10.2.4",
+    "gulp": "^3.9.0",
+    "jquery": "^2.1.4",
+    "knex": "^0.8.6",
+    "mithril": "^0.2.0",
+    "mocha": "^2.2.5",
+    "passport-makerpass": "^1.2.0",
+    "pg": "^4.4.0"
+  }
+}
