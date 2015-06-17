@@ -11,10 +11,13 @@ var School     = require('./models/school')
 
 exports.mount = function (app, host) {
 
+  if (! process.env.MAKERPASS_CLIENT_ID || ! process.env.MAKERPASS_CLIENT_SECRET) {
+    throw new Error("Please set MAKERPASS_CLIENT_ID and MAKERPASS_CLIENT_SECRET")
+  }
 
   passport.use(new MakerpassStrategy({
-      clientID: process.env.MAKERPASS_CLIENT_ID || 'eae6795ed5d6fe1fb29497641a083edb2c4fe242a233fc98138f7224177581e9',
-      clientSecret: process.env.MAKERPASS_CLIENT_SECRET || 'c92309a053636df7b24e1672ce6190ef9c76bca9e5aebf1cb8847e70607b534f',
+      clientID: process.env.MAKERPASS_CLIENT_ID,
+      clientSecret: process.env.MAKERPASS_CLIENT_SECRET,
       callbackURL: host + '/auth/makerpass/callback'
     },
     function(accessToken, refreshToken, profile, done) {
@@ -48,20 +51,13 @@ exports.mount = function (app, host) {
   app.get('/auth/makerpass/callback',
     passport.authenticate('makerpass', { failureRedirect: '/' }),
     function(req, res) {
-      // Successful authentication, redirect home.sj
-      res.redirect('/me')
+      // Successful authentication, redirect home.
+      res.redirect('/')
     })
 
   app.get('/me', function (req, res) {
-    res.send({ user: req.user})
+    res.send({ user: req.user })
   })
-
-
-  app.get('/users', function(req, res){
-    var users = User.retrieve(function(x){res.send({users: x})
-    })
-  })
-
 
   app.post('/signout', function (req, res) {
     req.session = null
@@ -78,6 +74,8 @@ var importAuthData = module.exports.importAuthData = function (mks) {
 
   return Promise.all(schoolPromises).then(function() {
     return Promise.all( mks.memberships.map( getProp('group') ).map(Group.updateOrCreate) )
+  }).then(function() {
+    return Membership.sync(mks.uid, mks.memberships)
   })
   .then(function() {
     return userPromise
