@@ -3,14 +3,14 @@
 //
 var passport = require('passport')
 var MakerpassStrategy = require('passport-makerpass').Strategy
-var Promise    = require('knex/node_modules/bluebird')
+var Promise    = require('../node_modulesknex/node_modules/bluebird')
 var User       = require('./models/user')
 var Group      = require('./models/group')
 var Membership = require('./models/membership')
 var School     = require('./models/school')
 
 exports.mount = function (app, host) {
-
+  
   if (! process.env.MAKERPASS_CLIENT_ID || ! process.env.MAKERPASS_CLIENT_SECRET) {
     throw new Error("Please set MAKERPASS_CLIENT_ID and MAKERPASS_CLIENT_SECRET")
   }
@@ -67,7 +67,6 @@ exports.mount = function (app, host) {
 }
 
 var importAuthData = module.exports.importAuthData = function (mks) {
-
   // These two can run in parallel
   var userPromise = importUser(mks)
   var schoolPromises = mks.schools.map(School.updateOrCreate)
