@@ -49,7 +49,7 @@ var routes = {
       return m.component(Outcomes)
     }
   }
-
+//m('a[href=/auth/makerpass/]', "Sign In")
 }
 
 // m.route.mode = 'pathname';
