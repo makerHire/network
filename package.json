@@ -22,7 +22,11 @@
   "dependencies": {
     "body-parser": "^1.13.1",
     "browserify": "^10.2.4",
+<<<<<<< HEAD
     "browserify-middleware": "^6.0.0",
+=======
+    "browserify-middleware": "^5.0.2",
+>>>>>>> (feat)API keys updated
     "cookie-session": "^1.1.0",
     "express": "^4.12.4",
     "glob": "^5.0.10",
@@ -33,8 +37,7 @@
     "mithril": "^0.2.0",
     "mocha": "^2.2.5",
     "passport": "^0.2.2",
-    "passport-makerpass": "^1.2.0",
-    "pg": "^4.4.0"
+    "passport-makerpass": "^1.2.0"
   },
   "devDependencies": {
     "del": "^1.2.0",
