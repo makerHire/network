@@ -11,13 +11,11 @@ var School     = require('./models/school')
 
 exports.mount = function (app, host) {
 
-  if (! process.env.MAKERPASS_CLIENT_ID || ! process.env.MAKERPASS_CLIENT_SECRET) {
-    throw new Error("Please set MAKERPASS_CLIENT_ID and MAKERPASS_CLIENT_SECRET")
-  }
+
 
   passport.use(new MakerpassStrategy({
-      clientID: process.env.MAKERPASS_CLIENT_ID,
-      clientSecret: process.env.MAKERPASS_CLIENT_SECRET,
+      clientID: process.env.MAKERPASS_CLIENT_ID || 'eae6795ed5d6fe1fb29497641a083edb2c4fe242a233fc98138f7224177581e9',
+      clientSecret: process.env.MAKERPASS_CLIENT_SECRET || 'c92309a053636df7b24e1672ce6190ef9c76bca9e5aebf1cb8847e70607b534f',
       callbackURL: host + '/auth/makerpass/callback'
     },
     function(accessToken, refreshToken, profile, done) {
