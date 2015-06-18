@@ -47,7 +47,7 @@ exports.mount = function (app, host) {
   app.get('/auth/makerpass/callback',
     passport.authenticate('makerpass', { failureRedirect: '/' }),
     function(req, res) {
-      // Successful authentication, redirect home.sj
+      // Successful authentication, redirect home.
       res.redirect('/me')
     })
 
@@ -77,6 +77,8 @@ var importAuthData = module.exports.importAuthData = function (mks) {
 
   return Promise.all(schoolPromises).then(function() {
     return Promise.all( mks.memberships.map( getProp('group') ).map(Group.updateOrCreate) )
+  }).then(function() {
+    return Membership.sync(mks.uid, mks.memberships)
   })
   .then(function() {
     return userPromise
