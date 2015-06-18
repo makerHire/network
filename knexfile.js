@@ -4,7 +4,8 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'learn_dev'
+      host: 'ec2-23-23-188-252.compute-1.amazonaws.com',
+      database: 'd7dub96b5jqr4l'
     },
     pool: {
       min: 2,
