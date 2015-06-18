@@ -17,11 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "browserify": "^10.2.4",
-<<<<<<< HEAD
     "browserify-middleware": "^6.0.0",
-=======
-    "browserify-middleware": "^5.0.2",
->>>>>>> (feat)API keys updated
     "cookie-session": "^1.1.0",
     "express": "^4.12.4",
     "gulp": "^3.9.0",
