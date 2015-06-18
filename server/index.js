@@ -20,7 +20,7 @@ app.use(express.static('client/public'))
 var session = require('cookie-session')
 app.use(session({
   name: 'learn:session',
-  secret: process.env.SESSION_SECRET || 'development',
+  secret: process.env.SESSION_SECRET || 'production',
   secure: (!! process.env.SESSION_SECRET),
   signed: true
 }))
