@@ -1,15 +1,14 @@
 // Include language extensions FIRST
-require('./ext/functions.js')
+// require('../ext/functions.js')
 
 var m = require('mithril')
 // var App = require('app.js')
 var Auth = require('../lib/auth.js')
 var Page = require('./views/page/page.js')
+var Outcomes = require('./views/outcomes/outcomes.js')
 var StudentProfile = require('./views/studentProfile/studentProfile.js')
 
-
-
-var goHome = m.route.papp('/', null, null)
+// var goHome = m.route.papp('/', null, null)
 var routes = {
 
   '/': {
@@ -39,6 +38,15 @@ var routes = {
     },
     view: function (ctrl) {
       return m.component(StudentProfile)
+    }
+  },
+
+    '/outcomes': {
+    controller: function () {
+      var ctrl = this
+    },
+    view: function (ctrl) {
+      return m.component(Outcomes)
     }
   }
 
