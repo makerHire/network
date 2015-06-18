@@ -1,4 +1,5 @@
 var m = require('mithril')
+var OutcomesGraph = require('../../components/outcomesGraph/outcomesGraph.js')
 
 exports.controller = function () {
     var ctrl = this
@@ -35,7 +36,8 @@ exports.view = function (ctrl) {
   return m('.profile', [
     m('h1', "Hello " + ctrl),
     m('h3', "Current Applications"),
-    m('button')
+    m('button'),
+    m.component(OutcomesGraph)
     //here is where we grab the jobs from the database
     //
     //Phone Screen
