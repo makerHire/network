@@ -52,7 +52,7 @@ exports.mount = function (app, host) {
     passport.authenticate('makerpass', { failureRedirect: '/' }),
     function(req, res) {
       // Successful authentication, redirect home.
-      res.redirect('/')
+      res.redirect('/me')
     })
 
   app.get('/me', function (req, res) {
