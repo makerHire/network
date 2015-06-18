@@ -11,6 +11,7 @@ var User = module.exports = {
   },
 
   create: function (attrs) {
+    console.log('creating user')
     attrs.created_at = new Date()
     return db('users').insert(attrs).return(attrs)
   },
