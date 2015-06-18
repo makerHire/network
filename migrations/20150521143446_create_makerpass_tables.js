@@ -1,6 +1,8 @@
 
 exports.up = function(knex, Promise) {
 
+  console.log('hello')
+
   return Promise.all([
     knex.schema.createTable('users', function (table) {
 
@@ -16,6 +18,7 @@ exports.up = function(knex, Promise) {
 
       table.string('uid').primary()
       table.string('school_uid').references('uid').inTable('schools').notNullable()
+      table.string('name_id')
       table.string('name')
       table.string('role')
       table.json('info')
@@ -37,12 +40,12 @@ exports.up = function(knex, Promise) {
 
       table.string('uid').primary()
       table.string('name')
+      table.string('name_id')
       table.string('location')
       table.string('url')
 
       table.timestamps()
     })
-
   ])
 }
 
