@@ -2,45 +2,55 @@
 require('./ext/functions.js')
 
 var m = require('mithril')
+// var App = require('app.js')
 var Auth = require('../lib/auth.js')
-var Page = require('./components/page/page.js')
-var StudentProfile = require('./components/studentProfile/studentProfile.js')
+var Page = require('./views/page/page.js')
+var StudentProfile = require('./views/studentProfile/studentProfile.js')
 
 
-var App = {}
+
+var goHome = m.route.papp('/', null, null)
+var routes = {
+
+  '/': {
+    controller: function () {
+      // Auth.authenticate()
+      var ctrl = this
+    },
+    view: function (ctrl) {
+      return signedOutView()
+    }
+  },
 
 
-App.controller = function () {
+  '/page': {
+    controller: function () {
+      var ctrl = this
+    },
+    view: function (ctrl) {
+      return m.component(Page)
+    }
+  },
 
-  var ctrl = this
-  ctrl.user = Auth.currentUser()
-  ctrl.signOut = function () {
-    Auth.signOut().then( ctrl.user.papp(null) )
+
+  '/profile': {
+    controller: function () {
+      var ctrl = this
+    },
+    view: function (ctrl) {
+      return m.component(StudentProfile)
+    }
   }
 
 }
 
-App.view = function (ctrl) {
-  return [
-    m('h1', "Network.MKS"),
-    m.component(StudentProfile),
-    m.component(Page, { content: "Hello, I am a page component." }),
+// m.route.mode = 'pathname';
+m.route(document.getElementById('app'), '/', routes);
 
-    ctrl.user() ? [
-      m('span', JSON.stringify(ctrl.user())),
-      m('a[href=#]', { onclick: ctrl.signOut.chill() }, "Sign Out"),
-    ] : [
-      m('a[href=/auth/makerpass/callback]', "Sign In"),
-    ],
 
-  ]
+function signedOutView () {
+  return m('.page', [
+    m('h1', "Welcome to the Learn App!"),
+    m('p', "Please sign in to access your course materials.")
+  ])
 }
-
-
-m.route(document.body, "/", {
-    "/": Page,
-    "/profile": StudentProfile,
-    "/outcomes": Outcomes
-    ""
-});
-
