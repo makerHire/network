@@ -2,7 +2,7 @@
   "name": "network",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "server/index.js",
   "directories": {
     "test": "test"
   },

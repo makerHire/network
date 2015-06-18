@@ -4,21 +4,26 @@ require('./ext/functions.js')
 var m = require('mithril')
 var Auth = require('../lib/auth.js')
 var Page = require('./components/page/page.js')
+var StudentProfile = require('./components/studentProfile/studentProfile.js')
 
 
 var App = {}
 
+
 App.controller = function () {
+
   var ctrl = this
   ctrl.user = Auth.currentUser()
   ctrl.signOut = function () {
     Auth.signOut().then( ctrl.user.papp(null) )
   }
+
 }
 
 App.view = function (ctrl) {
   return [
     m('h1', "Network.MKS"),
+    m.component(StudentProfile),
     m.component(Page, { content: "Hello, I am a page component." }),
 
     ctrl.user() ? [
@@ -31,4 +36,11 @@ App.view = function (ctrl) {
   ]
 }
 
-m.mount(document.getElementById('app'), App)
+
+m.route(document.body, "/", {
+    "/": Page,
+    "/profile": StudentProfile,
+    "/outcomes": Outcomes
+    ""
+});
+
