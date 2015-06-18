@@ -1,0 +1,10 @@
+.container{
+	background-color: 'red';
+	display: block;
+	height: '300px';
+}
+
+.words{
+	color: red;
+}
+
