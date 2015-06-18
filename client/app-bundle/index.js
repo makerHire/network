@@ -7,6 +7,7 @@ var Auth = require('../lib/auth.js')
 var Page = require('./views/page/page.js')
 var Outcomes = require('./views/outcomes/outcomes.js')
 var StudentProfile = require('./views/studentProfile/studentProfile.js')
+var Navbar = require('./components/navbar/navbar.js')
 
 // var goHome = m.route.papp('/')
 var routes = {
