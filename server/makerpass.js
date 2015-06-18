@@ -78,6 +78,7 @@ var importAuthData = module.exports.importAuthData = function (mks) {
     return Membership.sync(mks.uid, mks.memberships)
   })
   .then(function() {
+    console.log(userPromise)
     return userPromise
   })
 }
