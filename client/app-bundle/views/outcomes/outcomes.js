@@ -1,15 +1,18 @@
 var m = require('mithril')
-var Accordion = require('../../components/accordion/accordion.js')
-var OutcomesGraph = require('../../components/outcomesGraph/outcomesGraph.js')
+var Navbar         = require('../../components/navbar/navbar.js')
+var Phases         = require('../../components/phases/phases.js')
+var OutcomesGraph  = require('../../components/outcomesGraph/outcomesGraph.js')
+var Messaging      = require('../../components/messaging/messaging.js')
 
 exports.controller = function() {}
 
 exports.view = function(ctrl) {
 
     return m('.page', [
-    		m('.words', "this is where the navbar would be"),
+    		m.component(Navbar),
         m.component(OutcomesGraph),
-        m.component(Accordion)
+        m.component(Phases),
+        m.component(Messaging)
     ])
 }
 
