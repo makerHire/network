@@ -1,9 +1,10 @@
-var m             = require('mithril');
-var Navbar        = require('../../components/navbar/navbar.js');
-var NewApp        = require('../../components/newApp/newApp.js');
-var Messaging     = require('../../components/messaging/messaging.js');
-var Phases        = require('../../components/phases/phases.js');
-var PhoneScreen   = require('../../components/phoneScreen/phoneScreen.js');
+var m             	= require('mithril');
+var Navbar        	= require('../../components/navbar/navbar.js');
+var NewApp       	= require('../../components/newApp/newApp.js');
+var Messaging     	= require('../../components/messaging/messaging.js');
+var OnsiteInterview = require('../../components/onsiteInterview/onsiteInterview.js');
+var Phases        	= require('../../components/phases/phases.js');
+var PhoneScreen   	= require('../../components/phoneScreen/phoneScreen.js');
 
 
 exports.controller = function () {
@@ -16,6 +17,7 @@ exports.view = function (ctrl) {
     m.component(NewApp),
     m.component(PhoneScreen),
     m.component(Phases),
-    m.component(Messaging)
+    m.component(Messaging),
+    m.component(OnsiteInterview),
   ])
 }
