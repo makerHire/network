@@ -9,14 +9,13 @@ exports.controller = function () {
 exports.view = function (ctrl) {
 	console.log('navbar-view')
 	return m("nav", [
-			m("div", [
-				m("#brand-logo", [
-				// m('li', "MakerHire", a),
+		m("div", [
+			m("#brand-logo", [
 				m("a[href='/']", {config: m.route}, "MakerHire"),
 				m("a[href='/outcomes']",{config: m.route}, "Outcomes"),
-				m("a[href='/page']", {config: m.route}, "Student")
-					])
+				m("a[href='/profile']", {config: m.route}, "Student"),
 				])
+			])
 		])
 }
 
