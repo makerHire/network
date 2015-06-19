@@ -55,13 +55,12 @@ exports.mount = function (app, host) {
       res.redirect('/me')
     })
 
-  // app.get('/me', function (req, res) {
-  //   console.log(req)
-  //   res.send({ user: req.user})
-  // })
+  app.get('/me', function (req, res) {
+    res.send({ user: req.user})
+  })
 
 
-  app.get('/me', function(req, res){
+  app.get('/users', function(req, res){
     var users = User.retrieve(function(x){res.send({users: x})
     })
   })
