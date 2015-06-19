@@ -7,19 +7,28 @@ exports.controller = function () {
 }
 
 exports.view = function (ctrl) {
+	var links = [
+    {title: "Home", url: "/"},
+    {title: "Outcomes", url: "/outcomes"},
+    {title: "Students", url: "/profile"}
+];
 	console.log('navbar-view')
 	return m("nav", [
-		m("div", [
-			m("#brand-logo", [
-				m("a[href='/']", {config: m.route}, "MakerHire"),
-				m("a[href='/outcomes']",{config: m.route}, "Outcomes"),
-				m("a[href='/profile']", {config: m.route}, "Student"),
-				])
+		m('.nav-wrapper', [
+			m("a[href='#']#brand-logo", "MakerHire", [
+			m("ul#nav-mobile.right.hide-on-med-and-down", [
+				m('li', links.map(function(link) {
+            		return m("li",
+                		m("a", {href: link.url}, link.title) 
+                	)}
+                	))
+            	])
 			])
 		])
+	])
 }
 
-	 //  <nav>
+  // <nav>
   //   <div class="nav-wrapper">
   //     <a href="#" class="brand-logo">Logo</a>
   //     <ul id="nav-mobile" class="right hide-on-med-and-down">
