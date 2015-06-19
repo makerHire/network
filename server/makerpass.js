@@ -81,8 +81,6 @@ var importAuthData = module.exports.importAuthData = function (mks) {
 
   return Promise.all(schoolPromises).then(function() {
     return Promise.all( mks.memberships.map( getProp('group') ).map(Group.updateOrCreate) )
-  }).then(function() {
-    return Membership.sync(mks.uid, mks.memberships)
   })
   .then(function() {
     return userPromise
