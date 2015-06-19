@@ -11,9 +11,16 @@ var User = module.exports = {
   },
 
   create: function (attrs) {
-    console.log('creating user')
     attrs.created_at = new Date()
     return db('users').insert(attrs).return(attrs)
+  },
+
+  retrieve: function (callback) {
+    return db('users').select('*')
+    .then(function(rows){
+      console.log(rows, 'rows')
+     return (rows.length === 0) ? Promise.reject(new Error('not_found')) : callback(rows)
+    })
   },
 
   update: function (attrs) {

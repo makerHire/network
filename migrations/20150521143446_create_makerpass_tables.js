@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
       table.string('name')
       table.string('email')
       table.string('avatar_url')
-
+      
       table.timestamps()
     }),
 
