@@ -19,5 +19,4 @@ exports.view = function (ctrl) {
       m('.graph', "This will be the third graph"),
     ])
   ])
-
 }

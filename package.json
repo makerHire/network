@@ -23,6 +23,7 @@
     "gulp": "^3.9.0",
     "jquery": "^2.1.4",
     "knex": "^0.8.6",
+    "materialize-css": "^0.96.1",
     "mithril": "^0.2.0",
     "mocha": "^2.2.5",
     "passport": "^0.2.2",

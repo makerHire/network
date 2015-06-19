@@ -28,13 +28,13 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('default', function() {
-    gulp.start('scripts', 'watch');
+    gulp.start('scripts', 'watch', 'develop');
     //gulp.start('develop');
 });
 
 gulp.task('watch', function() {
   // Watch .js files
-  gulp.watch('server.js', ['scripts']);
+  gulp.watch('server/index.js', ['scripts']);
 
    // Create LiveReload server
   livereload.listen();
@@ -52,7 +52,7 @@ gulp.task('watch', function() {
 // })
 
 gulp.task('develop', function () {
-  nodemon({ script: 'server.js',
+  nodemon({ script: 'server/index.js',
             ext: 'html js',
             ignore: ['ignored.js'],
             tasks: ['default'] })

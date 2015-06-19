@@ -1,18 +1,19 @@
 var m = require('mithril')
+var Accordion = require('../../components/accordion/accordion.js')
+var OutcomesGraph = require('../../components/outcomesGraph/outcomesGraph.js')
 
 exports.controller = function() {}
 
 exports.view = function(ctrl) {
 
     return m('.page', [
-    		m('.container', 'helloskdsdklfjd'),
-        m('.words', 'asdasdsad'),
-        m('.words', 'Hello'),
-        m('h1', "HELLO JUSTIN")
+    		m('.words', "this is where the navbar would be"),
+        m.component(OutcomesGraph),
+        m.component(Accordion)
     ])
 }
 
-
+//TO get users: GET request to 
 
 // <body>
 //   <div class = "container">

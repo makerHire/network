@@ -1,5 +1,5 @@
 // Include language extensions FIRST
-// require('../ext/functions.js')
+// require('../functions.js')
 
 var m = require('mithril')
 // var App = require('app.js')
@@ -8,7 +8,7 @@ var Page = require('./views/page/page.js')
 var Outcomes = require('./views/outcomes/outcomes.js')
 var StudentProfile = require('./views/studentProfile/studentProfile.js')
 
-// var goHome = m.route.papp('/', null, null)
+// var goHome = m.route.papp('/')
 var routes = {
 
   '/': {
@@ -21,7 +21,6 @@ var routes = {
     }
   },
 
-
   '/page': {
     controller: function () {
       var ctrl = this
@@ -30,7 +29,6 @@ var routes = {
       return m.component(Page)
     }
   },
-
 
   '/profile': {
     controller: function () {
@@ -49,16 +47,15 @@ var routes = {
       return m.component(Outcomes)
     }
   }
-//m('a[href=/auth/makerpass/]', "Sign In")
 }
 
 // m.route.mode = 'pathname';
 m.route(document.getElementById('app'), '/', routes);
 
-
 function signedOutView () {
   return m('.page', [
     m('h1', "Welcome to the Learn App!"),
-    m('p', "Please sign in to access your course materials.")
+    m('p', "Please sign in to access your course materials."),
+    m('a[href=/auth/makerpass/]', "Sign In")
   ])
 }
