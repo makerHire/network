@@ -1,6 +1,6 @@
 var m = require('mithril')
 var Navbar         = require('../../components/navbar/navbar.js')
-var Phases         = require('../../components/phases/phases.js')
+// var Phases         = require('../../components/phases/phases.js')
 var OutcomesGraph  = require('../../components/outcomesGraph/outcomesGraph.js')
 var Messaging      = require('../../components/messaging/messaging.js')
 
