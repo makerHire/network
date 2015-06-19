@@ -10,6 +10,7 @@ exports.up = function(knex, Promise) {
       table.string('name')
       table.string('email')
       table.string('avatar_url')
+      table.string('role')
       
       table.timestamps()
     }),
@@ -45,7 +46,23 @@ exports.up = function(knex, Promise) {
       table.string('url')
 
       table.timestamps()
+    }),
+
+    knex.schema.createTable('jobs', function (table) {
+
+      table.string('uid').primary()
+      table.string('title')
+      table.dateTime('date_applied')
+      table.string('company').references('uid').inTable('companies').notNullable();
+      table.string('url')
+      table.string('contact')
+      table.string('app_method')
+      table.string('status').references('uid').inTable('phases').notNullable();
+      table.boolean('active')
+
+      table.timestamps()
     })
+
   ])
 }
 
