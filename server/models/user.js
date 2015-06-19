@@ -19,7 +19,6 @@ var User = module.exports = {
   retrieve: function (callback) {
     return db('users').select('*')
     .then(function(rows){
-      console.log(rows, 'rows')
      return (rows.length === 0) ? Promise.reject(new Error('not_found')) : callback(rows)
     })
   },
