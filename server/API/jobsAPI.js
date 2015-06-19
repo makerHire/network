@@ -13,7 +13,7 @@ exports.mount = function (app) {
   });
 
 
-	app.post('/API/addJob', function(req, res){
+	app.post('/API/jobs', function(req, res){
 		utils.collectData(req, function(data){
 			res.send(Jobs.updateOrCreate(data))
 		});

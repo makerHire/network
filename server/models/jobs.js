@@ -18,7 +18,7 @@ var Jobs = module.exports = {
   retrieve: function (callback) {
     return db('jobs').select('*')
     .then(function(rows){
-     return (rows.length === 0) ? Promise.reject(new Error('not_found')) : callback(rows)
+     return (rows.length === 0) ? callback('Jobs WIll Be here!!!!') : callback(rows)
     })
   },
 
