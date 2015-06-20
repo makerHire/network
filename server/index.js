@@ -26,7 +26,7 @@ app.use(session({
 }))
 
 require('./makerpass').mount(app, host)
-require('./api/jobsAPI').mount(app)
+require('./API/jobsAPI').mount(app)
 
 app.listen(port)
 console.log("Listening on port", port)

@@ -8,7 +8,6 @@ var Promise = require('knex/node_modules/bluebird')
 
 module.exports = knex;
 
-
 knex.migrate.latest([config]); 
 
 
