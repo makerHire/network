@@ -25,6 +25,7 @@ exports.view = function (ctrl) {
             	])
 			])
 		])
+	])
 }
 
   // <nav>
