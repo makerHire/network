@@ -21,12 +21,5 @@ exports.controller = function () {
 
 exports.view = function (ctrl) {
   console.log(ctrl.studentInfo().user.email);
-  
-  for (var i = 0; i < ctrl.studentJobs().Jobs.length; i++) {
-    console.log(ctrl.studentJobs().Jobs[i]);
-  };
-
-
-
   return m('div', 'STUDENT INFO HERE~~~')
 }
