@@ -57,6 +57,13 @@ exports.mount = function (app, host) {
     res.send({ user: req.user})
   })
 
+
+  app.get('/users', function(req, res){
+    var users = User.retrieve(function(x){res.send({users: x})
+    })
+  })
+
+
   app.post('/signout', function (req, res) {
     console.log('signout')
     req.session = null
