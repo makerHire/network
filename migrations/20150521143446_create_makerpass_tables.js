@@ -37,6 +37,7 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('phases', function (table) {
 
       table.string('uid').primary()
+      table.string('name')
       table.string('phase').references('uid').inTable('phases').notNullable()
       table.string('users').references('uid').inTable('users').notNullable()
       table.string('school').references('uid').inTable('schools').notNullable()
@@ -58,6 +59,7 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('jobs', function (table) {
 
       table.string('uid').primary()
+      table.string('user')
       table.string('title')
       table.dateTime('date_applied')
       table.string('company').references('uid').inTable('companies')
