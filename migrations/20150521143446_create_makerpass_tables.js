@@ -1,6 +1,5 @@
 
 exports.up = function(knex, Promise) {
-
   console.log('hello')
 
   return Promise.all([
