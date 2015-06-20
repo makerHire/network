@@ -33,7 +33,7 @@ exports.mount = function (app) {
 		console.log(req.body)
 		if (!req.body) return res.sendStatus(400)
 			var newValues = Jobs.updateOrCreate(req.body)
-		console.log(newValues)
+		res.send(req.body)
 	});
 
 }
