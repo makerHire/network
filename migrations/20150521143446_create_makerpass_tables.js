@@ -67,6 +67,7 @@ exports.up = function(knex, Promise) {
       table.string('app_method')
       table.string('status').references('uid').inTable('phases')
       table.boolean('active')
+      table.json('details')
 
       table.timestamps()
     }),
