@@ -2,17 +2,31 @@ var m = require('mithril');
 
 exports.controller = function () {
   var ctrl = this;
-  // var studentInfo = m.prop([]);
+  ctrl.studentInfo;
+  ctrl.studentJobs;
 
-  // function getStudentInfo(){
-  //   //Still need to make get request work.  CORS error
-  //   m.request({ method: 'GET', url: 'localhost:4000/me', 'Content-Type', "application/json"}).then(studentInfo);
-  // };
-  // getStudentInfo();
-  // console.log(getStudentInfo)
+  m.request({ method: 'GET', url: '/me'})
+    .then(function(info) {
+      ctrl.studentInfo = m.prop();
+      return ctrl.studentInfo(info)
+    });
+
+  m.request({ method: 'GET', url: '/api/jobs'})
+    .then(function(jobs) {
+      ctrl.studentJobs = m.prop();
+      return ctrl.studentJobs(jobs)
+    });
+  
 }
 
-exports.view = function (ctrl, studentInfo) {
-  // console.log(studentInfo);
-  return m('div.stud', 'studentInfo')
+exports.view = function (ctrl) {
+  console.log(ctrl.studentInfo().user.email);
+  
+  for (var i = 0; i < ctrl.studentJobs().Jobs.length; i++) {
+    console.log(ctrl.studentJobs().Jobs[i]);
+  };
+
+
+
+  return m('div', 'STUDENT INFO HERE~~~')
 }
