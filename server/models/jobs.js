@@ -18,19 +18,20 @@ var Jobs = module.exports = {
   retrieve: function (callback) {
     return db('jobs').select('*')
     .then(function(rows){
-     return (rows.length === 0) ? callback('Jobs WIll Be here!!!!') : callback(rows)
+     return (rows.length === 0) ? callback({title:'Jobs WIll Be here!!!!'}) : callback(rows)
     })
   },
 
   update: function (attrs) {
     attrs.updated_at = new Date()
+    console.log(attrs.uid)
     return db('jobs').update(attrs).where({ uid: attrs.uid })
       .then(function(affectedCount) {
         return (affectedCount === 0) ? Promise.reject(new Error('not_found')) : attrs
       })
   },
   updateOrCreate: function (attrs) {
-    return User.update(attrs).catch(User.create.papp(attrs))
+    return Jobs.update(attrs).catch(Jobs.create.papp(attrs))
   }
 
 }

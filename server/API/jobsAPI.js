@@ -5,7 +5,23 @@ var School     = require('../models/school')
 var Jobs       = require('../models/jobs')
 var Utils      = require('./utils')
 
+var bodyParser = require('body-parser')
+
+
+var headers = {
+    "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "access-control-allow-headers": "content-type, accept",
+        "access-control-max-age": 10, 
+        "content-type": "application/json"
+};
+
 exports.mount = function (app) {
+
+	var jsonParser = bodyParser.json()
+	app.use(bodyParser.json())
+	app.use(bodyParser.urlencoded({ extended: false }));
+
 
 	app.get('/API/jobs', function(req, res){
 		Jobs.retrieve(function(x){res.send({Jobs: x})
@@ -14,9 +30,10 @@ exports.mount = function (app) {
 
 
 	app.post('/API/jobs', function(req, res){
-		utils.collectData(req, function(data){
-			res.send(Jobs.updateOrCreate(data))
-		});
+		console.log(req.body)
+		if (!req.body) return res.sendStatus(400)
+			var newValues = Jobs.updateOrCreate(req.body)
+		console.log(newValues)
 	});
 
 }
