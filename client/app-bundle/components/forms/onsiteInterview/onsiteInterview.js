@@ -59,11 +59,3 @@ exports.view = function (ctrl) {
     ])
   ])
 }
-
-
-
-// On-site Interview
-// Scheduled for (date and time):
-// Completed on (date and time):
-// Person(s) Giving Interview (Name, Role, and Email):
-// How did it go? (Scale from 1-5):T
