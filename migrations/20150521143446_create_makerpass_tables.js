@@ -113,7 +113,7 @@ exports.up = function(knex, Promise) {
       table.integer('interview_id').references('id').inTable('interviews')
 
       table.timestamps()
-
+      
     }),
 
     knex.schema.createTable('contacts', function(table){

@@ -25,12 +25,23 @@ app.use(session({
   signed: true
 }))
 
+
+// bodyparser for endpoint conversion of JSON objects
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+//API endpoint integration
 require('./makerpass').mount(app, host);
 require('./API/jobsAPI').mount(app);
 require('./API/usersAPI').mount(app);
 require('./API/phasesAPI').mount(app);
 require('./API/companiesAPI').mount(app);
 require('./API/groupsAPI').mount(app);
+require('./API/applicationsAPI').mount(app);
+require('./API/questionsAPI').mount(app);
 
 
 app.listen(port)
