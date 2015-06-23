@@ -1,6 +1,6 @@
 var m = require('mithril')
 var Navbar         = require('../../components/navbar/navbar.js')
-// var Phases         = require('../../components/phases/phases.js')
+var Phases         = require('../../components/phases/phases.js')
 var OutcomesGraph  = require('../../components/outcomesGraph/outcomesGraph.js')
 var Messaging      = require('../../components/messaging/messaging.js')
 
@@ -8,11 +8,11 @@ exports.controller = function() {}
 
 exports.view = function(ctrl) {
 
-    return m('.container', [
-        m.component(OutcomesGraph),
-        m.component(Phases),
-        m.component(Messaging)
-    ])
+  return m('.container', [
+    m.component(OutcomesGraph),
+    m.component(Phases),
+    m.component(Messaging)
+  ])
 }
 
 //TO get users: GET request to 
