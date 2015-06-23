@@ -21,6 +21,7 @@ exports.mount = function (app, host) {
       callbackURL: host + '/auth/makerpass/callback'
     },
     function(accessToken, refreshToken, profile, done) {
+      console.log('strategy')
       importAuthData(profile).then(done.papp(null))
     }
   ))
@@ -52,7 +53,8 @@ exports.mount = function (app, host) {
     passport.authenticate('makerpass', { failureRedirect: '/' }),
     function(req, res) {
       // Successful authentication, redirect home.sj
-      res.redirect('/me')
+      console.log('redirecting')
+      res.redirect('/')
     })
 
   app.get('/me', function (req, res) {
@@ -67,6 +69,7 @@ exports.mount = function (app, host) {
 
 
   app.post('/signout', function (req, res) {
+    console.log('signout')
     req.session = null
     res.send({})
   })
@@ -83,6 +86,7 @@ var importAuthData = module.exports.importAuthData = function (mks) {
     return Promise.all( mks.memberships.map( getProp('group') ).map(Group.updateOrCreate) )
   })
   .then(function() {
+    console.log(userPromise)
     return userPromise
   })
 }

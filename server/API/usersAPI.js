@@ -3,6 +3,7 @@ var Group      = require('../models/group')
 var Membership = require('../models/membership')
 var School     = require('../models/school')
 var Jobs       = require('../models/jobs')
+var Phases     = require('../models/phases')
 var Utils      = require('./utils')
 
 var bodyParser = require('body-parser')
@@ -14,16 +15,16 @@ exports.mount = function (app) {
 	app.use(bodyParser.urlencoded({ extended: false }));
 
 
-	app.get('/API/jobs', function(req, res){
-		Jobs.retrieve(function(x){res.send({Jobs: x})
+	app.get('/API/users', function(req, res){
+		User.retrieve(function(x){res.send({User: x})
     })
   });
 
 
-	app.post('/API/jobs', function(req, res){
+	app.post('/API/users', function(req, res){
 		console.log(req.body)
 		if (!req.body) return res.sendStatus(400)
-			var newValues = Jobs.updateOrCreate(req.body)
+		var newValues = User.updateOrCreate(req.body)
 		res.send(req.body)
 	});
 
