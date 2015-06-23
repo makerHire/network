@@ -23,6 +23,14 @@ var Group = module.exports = {
       })
   },
 
+
+  retrieveAll: function (callback) {
+    return db('groups').select('*')
+    .then(function(rows){
+     return (rows.length === 0) ? callback({title:'Groups WIll Be here!!!!'}) : callback(rows)
+    })
+  },
+
   updateOrCreate: function (attrs) {
     return Group.update(attrs).catch(Group.create.papp(attrs))
   }

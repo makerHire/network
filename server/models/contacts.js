@@ -1,34 +1,34 @@
 var db = require('../db.js')
 var Promise = require('knex/node_modules/bluebird')
 
-var Companies = module.exports = {
+var contacts = module.exports = {
 
   create: function (attrs) {
     attrs.created_at = new Date()
-    return db('companies').insert(attrs).return(attrs)
+    return db('contacts').insert(attrs).return(attrs)
   },
 
   update: function (attrs) {
     attrs.updated_at = new Date()
-    return db('companies').update(attrs).where({ uid: attrs.uid })
+    return db('contacts').update(attrs).where({ uid: attrs.uid })
       .then(function(affectedCount) {
         return (affectedCount === 0) ? Promise.reject(new Error('not_found')) : attrs
       })
   },
 
   updateOrCreate: function (attrs) {
-    return Companies.update(attrs).catch(Companies.create.papp(attrs))
+    return contacts.update(attrs).catch(contacts.create.papp(attrs))
   },
 
   retrieveAll: function (callback) {
-    return db('companies').select('*')
+    return db('contacts').select('*')
     .then(function(rows){
-     return (rows.length === 0) ? callback({title:'companies WIll Be here!!!!'}) : callback(rows)
+     return (rows.length === 0) ? callback({title:'contacts WIll Be here!!!!'}) : callback(rows)
     })
   },
 
   destroy: function (uid) {
-    return db('Companies').where({ uid: uid }).delete()
+    return db('contacts').where({ uid: uid }).delete()
   }
 
 }

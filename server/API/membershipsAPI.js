@@ -3,21 +3,23 @@ var Group      = require('../models/group')
 var Membership = require('../models/membership')
 var School     = require('../models/school')
 var Jobs       = require('../models/jobs')
+var Membership = require('../models/membership')
 var Utils      = require('./utils')
+
 
 
 exports.mount = function (app) {
 
-	app.get('/API/users', function(req, res){
-		User.retrieve(function(x){res.send({User: x})
+	app.get('/API/membership', function(req, res){
+		Membership.retrieveAll(function(x){res.send({Membership: x})
     })
   });
 
 
-	app.post('/API/users', function(req, res){
+	app.post('/API/membership', function(req, res){
 		console.log(req.body)
 		if (!req.body) return res.sendStatus(400)
-		var newValues = User.updateOrCreate(req.body)
+		var newValues = Membership.updateOrCreate(req.body)
 		res.send(req.body)
 	});
 

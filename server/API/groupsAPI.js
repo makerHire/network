@@ -3,7 +3,6 @@ var Groups     = require('../models/group')
 var Membership = require('../models/membership')
 var School     = require('../models/school')
 var Jobs       = require('../models/jobs')
-var Phases     = require('../models/phases')
 var Companies  = require('../models/companies')
 var Utils      = require('./utils')
 
@@ -11,7 +10,7 @@ var Utils      = require('./utils')
 exports.mount = function (app) {
 
 	app.get('/API/Groups', function(req, res){
-		Groups.retrieve(function(x){res.send({Groups: x})
+		Groups.retrieveAll(function(x){res.send({Groups: x})
     })
   });
 

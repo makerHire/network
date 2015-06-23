@@ -3,21 +3,15 @@ var Group      = require('../models/group')
 var Membership = require('../models/membership')
 var School     = require('../models/school')
 var Jobs       = require('../models/jobs')
-var Phases     = require('../models/phases')
 var Companies  = require('../models/companies')
 var Utils      = require('./utils')
 
-var bodyParser = require('body-parser')
+
 
 exports.mount = function (app) {
 
-	var jsonParser = bodyParser.json()
-	app.use(bodyParser.json())
-	app.use(bodyParser.urlencoded({ extended: false }));
-
-
 	app.get('/API/companies', function(req, res){
-		Companies.retrieve(function(x){res.send({Companies: x})
+		Companies.retrieveAll(function(x){res.send({Companies: x})
     })
   });
 
@@ -28,6 +22,5 @@ exports.mount = function (app) {
 		var newValues = Companies.updateOrCreate(req.body)
 		res.send(req.body)
 	});
-
 }
 

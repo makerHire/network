@@ -3,7 +3,6 @@ var Group      = require('../models/group')
 var Membership = require('../models/membership')
 var School     = require('../models/school')
 var Jobs       = require('../models/jobs')
-var Phases     = require('../models/phases')
 var Applications = require('../models/applications')
 var Utils      = require('./utils')
 
@@ -14,7 +13,6 @@ exports.mount = function (app) {
     Applications.retrieveAll(function(x){res.send({Applications: x})
     })
   });
-
 
   app.post('/API/applications', function(req, res){
     console.log(req.body)
