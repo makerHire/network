@@ -20,5 +20,5 @@ exports.view = function (ctrl) {
     m.component(Phases),
     m.component(Messaging),
     m.component(OnsiteInterview),
-  ])
+  ]) 
 }

@@ -14,41 +14,32 @@ var gulp = require('gulp'),
     del = require('del');
 
 
-gulp.task('scripts', function() {
-  return gulp.src('server.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    // Concat, Minify, and Uglify tasks are below
-    // These will be added later on once needed
-    // .pipe(concat('main.js'))
-    // .pipe(gulp.dest('dist/assets/js'))
-    // .pipe(rename({suffix: '.min'}))
-    // .pipe(uglify())
-    // .pipe(gulp.dest('dist/assets/js'))
-    .pipe(notify({ message: 'Scripts task complete' }));
-});
-
+var routes = {
+  javascript: ['client/**/*.js','client/**/**/*.js','client/**/**/**/*.js'],
+}
 
 gulp.task('lint', function() {
-  return gulp.src(["client/**"]) //FIXME: add , "server/**", "server/*" 
+  return gulp.src(routes.javascript)
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
 });
+
+gulp.task('build', function() {
+  return gulp.src(routes.javascript)
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('dist/assets/js'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/assets/js'))
+})
 
 gulp.task('watch', function() {
   // Watch .js files
-  gulp.watch('server/index.js');
-
-   // Create LiveReload server
-  livereload.listen();
-
-  // Watch any files in dist/, reload on change
-  gulp.watch(['dist/**', 'client/**/*.js','client/**/**/*.js'], ['lint']).on('change', livereload.changed);
+  gulp.watch(routes.javascript);
 });
 
 gulp.task('default', function() {
-    gulp.start('watch', 'lint', 'develop');
-    //gulp.start('develop');
+    gulp.start('lint', 'develop');
 });
 // gulp.task('start', function () {
 //   nodemon({
