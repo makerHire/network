@@ -27,7 +27,6 @@ exports.up = function(knex, Promise) {
       table.timestamps()
     }),
 
-
     knex.schema.createTable('jobs', function(table){
       table.increments('id').primary()
       table.integer('company_id').references('id').inTable('companies')
@@ -75,8 +74,6 @@ exports.up = function(knex, Promise) {
       table.timestamps()
     }),
 
-
-
     knex.schema.createTable('titles', function(table){
 
       table.increments('id').primary()
@@ -95,8 +92,7 @@ exports.up = function(knex, Promise) {
       table.timestamps()
     }),
 
-
-    knex.schema.createTable('interviews', function(table){
+  knex.schema.createTable('interviews', function(table){
 
       table.increments('id').primary()
       table.integer('app_id').references('id').inTable('applications')
@@ -111,7 +107,6 @@ exports.up = function(knex, Promise) {
       table.timestamps()
     }),
 
-
     knex.schema.createTable('questions', function(table){
       table.increments('id').primary();
       table.string('name')
@@ -120,8 +115,6 @@ exports.up = function(knex, Promise) {
       table.timestamps()
 
     }),
-
-
 
     knex.schema.createTable('contacts', function(table){
 
