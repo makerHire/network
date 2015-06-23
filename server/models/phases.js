@@ -1,27 +1,27 @@
 var db = require('../db.js')
 var Promise = require('knex/node_modules/bluebird')
 
-var Memberships = module.exports = {
+var Phases = module.exports = {
 
   create: function (attrs) {
     attrs.created_at = new Date()
-    return db('Memberships').insert(attrs).return(attrs)
+    return db('phases').insert(attrs).return(attrs)
   },
 
   update: function (attrs) {
     attrs.updated_at = new Date()
-    return db('Memberships').update(attrs).where({ uid: attrs.uid })
+    return db('phases').update(attrs).where({ uid: attrs.uid })
       .then(function(affectedCount) {
         return (affectedCount === 0) ? Promise.reject(new Error('not_found')) : attrs
       })
   },
 
   updateOrCreate: function (attrs) {
-    return Memberships.update(attrs).catch(Memberships.create.papp(attrs))
+    return Phases.update(attrs).catch(Phases.create.papp(attrs))
   },
 
   destroy: function (uid) {
-    return db('Memberships').where({ uid: uid }).delete()
+    return db('phases').where({ uid: uid }).delete()
   }
 
 }

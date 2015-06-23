@@ -29,8 +29,8 @@ exports.up = function(knex, Promise) {
     }),
 
 
-    knex.schema.createTable('jobs', function(){
-      table.integer.increments('id').primary()
+    knex.schema.createTable('jobs', function(table){
+      table.increments('id').primary()
       table.integer('company_id').references('id').inTable('companies')
       table.integer('title_id').references('id').inTable('titles')
       table.string('user_id').references('uid').inTable('users')
@@ -43,7 +43,7 @@ exports.up = function(knex, Promise) {
 
     knex.schema.createTable('companies', function (table) {
 
-      table.integer.increments('id').primary()
+      table.increments('id').primary()
       table.string('name')
       table.string('url')
       table.string('address')
@@ -64,10 +64,10 @@ exports.up = function(knex, Promise) {
 
     knex.schema.createTable('applications', function (table) {
 
-      table.integer.increments('id').primary()
+      table.increments('id').primary()
       table.string('phase')
       table.dateTime('date_applied')
-      table.integer('contact_id').referenced('id').inTable('contacts')
+      table.integer('contact_id').references('id').inTable('contacts')
       table.string('app_method')
       table.string('user_id').references('uid').inTable('users')
       table.boolean('active')
@@ -80,7 +80,7 @@ exports.up = function(knex, Promise) {
 
     knex.schema.createTable('titles', function(table){
 
-      table.integer.increments('id').primary();
+      table.increments('id').primary()
       table.string('title')
 
       table.timestamps()
@@ -99,20 +99,19 @@ exports.up = function(knex, Promise) {
 
     knex.schema.createTable('interviews', function(table){
 
-      table.integer.increments('id').primary();
-      table.integer('app_id').referenes('id').inTable('applications')
+      table.increments('id').primary()
+      table.integer('app_id').references('id').inTable('applications')
       table.json('info')
       table.dateTime('date')
 
       table.timestamps()
-
     }),
 
 
 
     knex.schema.createTable('contacts', function(table){
 
-      table.integer.increments('id').primary()
+      table.increments('id').primary()
       table.string('name')
       table.string('phone_number')
       table.integer('company_id').references('id').inTable('companies')
