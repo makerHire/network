@@ -1,5 +1,5 @@
 var User       = require('../models/user')
-var Groups      = require('../models/group')
+var Groups     = require('../models/group')
 var Membership = require('../models/membership')
 var School     = require('../models/school')
 var Jobs       = require('../models/jobs')
