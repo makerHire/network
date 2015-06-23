@@ -16,9 +16,9 @@ exports.up = function(knex, Promise) {
 	}),
 
 	knex.schema.createTable('questions', function(table){
-		table.increments('id').primary();
-		table.string('name')
-		table.integer('interview_id').references('id').inTable('interviews')
+	  table.increments('id').primary();
+	  table.string('name')
+	  table.integer('interview_id').references('id').inTable('interviews')
 	})
 
   ])
