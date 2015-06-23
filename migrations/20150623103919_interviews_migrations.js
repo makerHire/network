@@ -2,8 +2,11 @@
 exports.up = function(knex, Promise) {
 	console.log('interview Migrations')
 
+
+
+	return Promise.all([
 	knex.schema.table('interviews', function (table) {
-	  table.dropTable('date');
+	  table.dropColumn('date');
 	  table.dateTime('scheduled_date');
 	  table.dateTime('occured_date')
 	  table.integer('contacts').references('id').inTable('contacts');
@@ -12,13 +15,13 @@ exports.up = function(knex, Promise) {
 	  table.integer('preparedness')
 	}),
 
-	knex.schema.table('questions', function(table){
+	knex.schema.createTable('questions', function(table){
 		table.increments('id').primary();
 		table.string('name')
-		table.integer('interview_id').references('interviews').inTable('interviews')
+		table.integer('interview_id').references('id').inTable('interviews')
 	})
 
-  
+  ])
 };
 
 exports.down = function(knex, Promise) {
