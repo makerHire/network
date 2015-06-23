@@ -8,7 +8,8 @@ var Promise = require('knex/node_modules/bluebird')
 
 module.exports = knex;
 
-knex.migrate.latest([config]); 
+knex.migrate.make('intialDB', ['../migrations/20150521143446_create_makerpass_tables.sql']) 
+
 
 
 knex.deleteEverything = function () {
