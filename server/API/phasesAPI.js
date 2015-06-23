@@ -6,14 +6,9 @@ var Jobs       = require('../models/jobs')
 var Phases     = require('../models/phases')
 var Utils      = require('./utils')
 
-var bodyParser = require('body-parser')
+
 
 exports.mount = function (app) {
-
-	var jsonParser = bodyParser.json()
-	app.use(bodyParser.json())
-	app.use(bodyParser.urlencoded({ extended: false }));
-
 
 	app.get('/API/phases', function(req, res){
 		Phases.retrieve(function(x){res.send({Phases: x})

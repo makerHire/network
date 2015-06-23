@@ -3,19 +3,15 @@ var Group      = require('../models/group')
 var Membership = require('../models/membership')
 var School     = require('../models/school')
 var Jobs       = require('../models/jobs')
+var Phases     = require('../models/phases')
+var Companies  = require('../models/companies')
 var Utils      = require('./utils')
 
-var bodyParser = require('body-parser')
 
 exports.mount = function (app) {
 
-	var jsonParser = bodyParser.json()
-	app.use(bodyParser.json())
-	app.use(bodyParser.urlencoded({ extended: false }));
-
-
 	app.get('/API/jobs', function(req, res){
-		Jobs.retrieve(function(x){res.send({Jobs: x})
+		Jobs.retrieveAll(function(x){res.send({Jobs: x})
     })
   });
 

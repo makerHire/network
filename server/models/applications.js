@@ -1,10 +1,10 @@
 var db = require('../db.js')
 var Promise = require('knex/node_modules/bluebird')
 
-var Jobs = module.exports = {
+var Applications = module.exports = {
 
 	find: function (uid) {
-    return db('jobs').select('*').where({ uid: uid }).limit(1)
+    return db('applications').select('*').where({ uid: uid }).limit(1)
       .then(function(rows) {
         return (rows.length === 0) ? Promise.reject(new Error('not_found')) : rows[0]
       })
@@ -12,26 +12,26 @@ var Jobs = module.exports = {
 
   create: function (attrs) {
     attrs.created_at = new Date()
-    return db('jobs').insert(attrs).return(attrs)
+    return db('applications').insert(attrs).return(attrs)
   },
 
   retrieveAll: function (callback) {
-    return db('jobs').select('*')
+    return db('applications').select('*')
     .then(function(rows){
-     return (rows.length === 0) ? callback({title:'Jobs WIll Be here!!!!'}) : callback(rows)
+     return (rows.length === 0) ? callback({title:'Applications WIll Be here!!!!'}) : callback(rows)
     })
   },
 
   update: function (attrs) {
     attrs.updated_at = new Date()
     console.log(attrs.uid)
-    return db('jobs').update(attrs).where({ uid: attrs.uid })
+    return db('applications').update(attrs).where({ uid: attrs.uid })
       .then(function(affectedCount) {
         return (affectedCount === 0) ? Promise.reject(new Error('not_found')) : attrs
       })
   },
   updateOrCreate: function (attrs) {
-    return Jobs.update(attrs).catch(Jobs.create.papp(attrs))
+    return Applications.update(attrs).catch(Applications.create.papp(attrs))
   }
 
 }
