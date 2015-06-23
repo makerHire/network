@@ -42,6 +42,8 @@ require('./API/companiesAPI').mount(app);
 require('./API/groupsAPI').mount(app);
 require('./API/applicationsAPI').mount(app);
 require('./API/questionsAPI').mount(app);
+require('./API/titlesAPI').mount(app);
+
 
 
 app.listen(port)
