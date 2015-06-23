@@ -25,8 +25,13 @@ app.use(session({
   signed: true
 }))
 
-require('./makerpass').mount(app, host)
-require('./API/jobsAPI').mount(app)
+require('./makerpass').mount(app, host);
+require('./API/jobsAPI').mount(app);
+require('./API/usersAPI').mount(app);
+require('./API/phasesAPI').mount(app);
+require('./API/companiesAPI').mount(app);
+require('./API/groupsAPI').mount(app);
+
 
 app.listen(port)
 console.log("Listening on port", port)

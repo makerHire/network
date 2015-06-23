@@ -8,10 +8,9 @@ exports.controller = function() {
 };
 
 
-exports.layout = function(view) {
+exports.layout = function(viewContents) {
   return m('div', [
-    m.component('Navbar'),
-    view
-    ])
-  //render the view  beneath navbar
+    m.component(Navbar),
+    viewContents
+  ]);
 };

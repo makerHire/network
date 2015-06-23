@@ -8,12 +8,11 @@ exports.controller = function() {}
 
 exports.view = function(ctrl) {
 
-    return m('.page', [
-    		m.component(Navbar),
-        m.component(OutcomesGraph),
-        m.component(Phases),
-        m.component(Messaging)
-    ])
+  return m('.container', [
+    m.component(OutcomesGraph),
+    m.component(Phases),
+    m.component(Messaging)
+  ])
 }
 
 //TO get users: GET request to 

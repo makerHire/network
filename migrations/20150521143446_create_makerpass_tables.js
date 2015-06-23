@@ -1,5 +1,6 @@
 
 exports.up = function(knex, Promise) {
+
   console.log('hello')
 
   return Promise.all([
@@ -9,13 +10,7 @@ exports.up = function(knex, Promise) {
       table.string('name')
       table.string('email')
       table.string('avatar_url')
-      table.string('role')
-      table.string('jobs').references('uid').inTable('jobs')
-      table.string('status').references('uid').inTable('phases')
-      table.boolean('active')
-      table.string('school').references('uid').inTable('schools')
-      table.string('company').references('uid').inTable('companies')
-      table.string('salary')
+      table.string('status')
       table.string('gender')
       
       table.timestamps()
@@ -33,13 +28,25 @@ exports.up = function(knex, Promise) {
       table.timestamps()
     }),
 
-    knex.schema.createTable('phases', function (table) {
 
-      table.string('uid').primary()
+    knex.schema.createTable('jobs', function(table){
+      table.increments('id').primary()
+      table.integer('company_id').references('id').inTable('companies')
+      table.integer('title_id').references('id').inTable('titles')
+      table.string('user_id').references('uid').inTable('users')
+      table.dateTime('start_date')
+      table.dateTime('end_date')
+      table.integer('salary')
+
+      table.timestamps()
+    }),
+
+    knex.schema.createTable('companies', function (table) {
+
+      table.increments('id').primary()
       table.string('name')
-      table.string('phase').references('uid').inTable('phases').notNullable()
-      table.string('users').references('uid').inTable('users').notNullable()
-      table.string('school').references('uid').inTable('schools').notNullable()
+      table.string('url')
+      table.string('address')
 
       table.timestamps()
     }),
@@ -55,33 +62,75 @@ exports.up = function(knex, Promise) {
       table.timestamps()
     }),
 
-    knex.schema.createTable('jobs', function (table) {
+    knex.schema.createTable('applications', function (table) {
 
-      table.string('uid').primary()
-      table.string('user')
-      table.string('title')
+      table.increments('id').primary()
+      table.string('phase')
       table.dateTime('date_applied')
-      table.string('company').references('uid').inTable('companies')
-      table.string('contact')
+      table.integer('contact_id').references('id').inTable('contacts')
       table.string('app_method')
-      table.string('status').references('uid').inTable('phases')
+      table.string('user_id').references('uid').inTable('users')
       table.boolean('active')
-      table.json('details')
+      table.integer('title_id').references('id').inTable('titles')
 
       table.timestamps()
     }),
 
-    knex.schema.createTable('companies', function (table) {
+
+
+    knex.schema.createTable('titles', function(table){
+
+      table.increments('id').primary()
+      table.string('title')
+
+      table.timestamps()
+    }),
+
+    knex.schema.createTable('memberships', function (table) {
 
       table.string('uid').primary()
-      table.string('name')
-      table.string('url')
-      table.string('location')
-      table.string('app_method')
-      table.string('contacts')
-      table.string('status').references('uid').inTable('phases')
-      table.boolean('active')
+      table.string('user_uid').references('uid').inTable('users').notNullable()
+      table.string('group_uid').references('uid').inTable('groups').notNullable()
+      table.string('role')
 
+      table.timestamps()
+    }),
+
+
+    knex.schema.createTable('interviews', function(table){
+
+      table.increments('id').primary()
+      table.integer('app_id').references('id').inTable('applications')
+      table.json('info')
+      table.dateTime('scheduled_date')
+      table.dateTime('occured_date')
+      table.integer('contacts').references('id').inTable('contacts');
+      table.string('follow_up')
+      table.integer('quality')
+      table.integer('preparedness')
+
+      table.timestamps()
+    }),
+
+
+    knex.schema.createTable('questions', function(table){
+      table.increments('id').primary();
+      table.string('name')
+      table.integer('interview_id').references('id').inTable('interviews')
+
+      table.timestamps()
+
+    }),
+
+
+
+    knex.schema.createTable('contacts', function(table){
+
+      table.increments('id').primary()
+      table.string('name')
+      table.string('phone_number')
+      table.integer('company_id').references('id').inTable('companies')
+      
       table.timestamps()
     })
   ])
@@ -89,12 +138,8 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('phases'),
+    knex.schema.dropTable('memberships'),
     knex.schema.dropTable('groups'),
-    knex.schema.dropTable('users'),
-    knex.schema.dropTable('companies'),
-    knex.schema.dropTable('jobs'),
-    knex.schema.dropTable('mem')
-
+    knex.schema.dropTable('users')
   ])
 }
