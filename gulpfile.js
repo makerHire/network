@@ -33,26 +33,14 @@ gulp.task('build', function() {
     .pipe(gulp.dest('dist/assets/js'))
 })
 
-gulp.task('watch', function() {
-  // Watch .js files
-  gulp.watch(routes.javascript);
-});
-
 gulp.task('default', function() {
     gulp.start('lint', 'develop');
 });
-// gulp.task('start', function () {
-//   nodemon({
-//     script: 'server.js',
-//     ext: 'js html',
-//     env: { 'NODE_ENV': 'development' }
-//   })
-// })
 
 gulp.task('develop', function () {
   nodemon({ script: 'server/index.js',
             ext: 'html js',
-            ignore: ['ignored.js'],
+            ignore: [],
             tasks: ['default'] })
     .on('restart', function () {
       console.log('restarted!')
