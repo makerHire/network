@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     nodemon = require('gulp-nodemon'),
     del = require('del');
 
+
 gulp.task('scripts', function() {
   return gulp.src('server.js')
     .pipe(jshint())
@@ -27,22 +28,28 @@ gulp.task('scripts', function() {
     .pipe(notify({ message: 'Scripts task complete' }));
 });
 
-gulp.task('default', function() {
-    gulp.start('scripts', 'watch', 'develop');
-    //gulp.start('develop');
+
+gulp.task('lint', function() {
+  return gulp.src(["client/**"]) //FIXME: add , "server/**", "server/*" 
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
 });
 
 gulp.task('watch', function() {
   // Watch .js files
-  gulp.watch('server/index.js', ['scripts']);
+  gulp.watch('server/index.js');
 
    // Create LiveReload server
   livereload.listen();
 
   // Watch any files in dist/, reload on change
-  gulp.watch(['dist/**']).on('change', livereload.changed);
+  gulp.watch(['dist/**', 'client/**/*.js','client/**/**/*.js'], ['lint']).on('change', livereload.changed);
 });
 
+gulp.task('default', function() {
+    gulp.start('watch', 'lint', 'develop');
+    //gulp.start('develop');
+});
 // gulp.task('start', function () {
 //   nodemon({
 //     script: 'server.js',
