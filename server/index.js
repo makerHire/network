@@ -37,12 +37,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 require('./makerpass').mount(app, host);
 require('./API/jobsAPI').mount(app);
 require('./API/usersAPI').mount(app);
-require('./API/phasesAPI').mount(app);
 require('./API/companiesAPI').mount(app);
 require('./API/groupsAPI').mount(app);
 require('./API/applicationsAPI').mount(app);
 require('./API/questionsAPI').mount(app);
 require('./API/titlesAPI').mount(app);
+require('./API/membershipsAPI').mount(app);
+require('./API/interviewsAPI').mount(app);
+require('./API/contactsAPI').mount(app);
+require('./API/schoolsAPI').mount(app);
+
 
 
 

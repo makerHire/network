@@ -1,7 +1,7 @@
 var db = require('../db.js')
 var Promise = require('knex/node_modules/bluebird')
 
-var Questions = module.exports = {
+var Titles = module.exports = {
 
 	find: function (uid) {
     return db('titles').select('*').where({ uid: uid }).limit(1)

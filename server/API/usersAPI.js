@@ -3,7 +3,6 @@ var Group      = require('../models/group')
 var Membership = require('../models/membership')
 var School     = require('../models/school')
 var Jobs       = require('../models/jobs')
-var Phases     = require('../models/phases')
 var Utils      = require('./utils')
 
 

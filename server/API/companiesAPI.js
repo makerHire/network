@@ -3,7 +3,6 @@ var Group      = require('../models/group')
 var Membership = require('../models/membership')
 var School     = require('../models/school')
 var Jobs       = require('../models/jobs')
-var Phases     = require('../models/phases')
 var Companies  = require('../models/companies')
 var Utils      = require('./utils')
 
@@ -23,6 +22,5 @@ exports.mount = function (app) {
 		var newValues = Companies.updateOrCreate(req.body)
 		res.send(req.body)
 	});
-
 }
 
