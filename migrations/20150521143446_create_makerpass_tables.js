@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
 
   console.log('hello')
@@ -102,9 +101,24 @@ exports.up = function(knex, Promise) {
       table.increments('id').primary()
       table.integer('app_id').references('id').inTable('applications')
       table.json('info')
-      table.dateTime('date')
+      table.dateTime('scheduled_date')
+      table.dateTime('occured_date')
+      table.integer('contacts').references('id').inTable('contacts');
+      table.string('follow_up')
+      table.integer('quality')
+      table.integer('preparedness')
 
       table.timestamps()
+    }),
+
+
+    knex.schema.createTable('questions', function(table){
+      table.increments('id').primary();
+      table.string('name')
+      table.integer('interview_id').references('id').inTable('interviews')
+
+      table.timestamps()
+
     }),
 
 
