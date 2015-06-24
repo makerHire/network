@@ -15,6 +15,17 @@ var Applications = module.exports = {
     return db('applications').insert(attrs).return(attrs)
   },
 
+
+
+  retrieveWithCompany: function (callback) {
+
+  return db.select('*').from('applications').join('companies', function() {
+    this.on('companies.id', '=', 'applications.company_id')})
+    .then(function(rows){
+     return (rows.length === 0) ? callback({title:'Apps with companies will be here, joined'}) : callback(rows)
+  })
+},
+
   retrieveAll: function (callback) {
     return db('applications').select('*')
     .then(function(rows){
