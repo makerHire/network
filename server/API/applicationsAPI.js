@@ -21,5 +21,12 @@ exports.mount = function (app) {
     res.send(req.body)
   });
 
+
+  app.get('/API/appswithcompanies', function(req,res){
+    if (!req.body) return res.sendStatus(400)
+      Applications.retrieveWithCompany(function(x){res.send({Applications: x})
+    })
+  });
+
 }
 
