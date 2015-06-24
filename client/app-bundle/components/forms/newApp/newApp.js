@@ -32,9 +32,10 @@ exports.controller = function () {
     e.preventDefault()
     m.request({
       method: 'GET',
-      url: "/API/jobs/",
-      data: company_id
-    }).then('getJob success', company_id);
+      url: "/API/companies/",
+    }).then(function(companies){
+      console.log(companies);
+    });
   }
 };
 
