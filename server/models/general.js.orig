@@ -1,7 +1,11 @@
 var db = require('../db.js')
 var Promise = require('knex/node_modules/bluebird')
 
+<<<<<<< HEAD
+var Companies = module.exports = {
+=======
 var General = module.exports = {
+>>>>>>> 07d7e96af083773b7233c22aea4721e5d89e886a
 
   create: function (attrs) {
     attrs.created_at = new Date()
@@ -32,3 +36,7 @@ var General = module.exports = {
   }
 
 }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 07d7e96af083773b7233c22aea4721e5d89e886a
