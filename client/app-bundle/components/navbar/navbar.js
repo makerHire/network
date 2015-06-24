@@ -22,7 +22,7 @@ exports.view = function (ctrl) {
           	)}
           ))
       	])
-			])
-		])
+	  ])
 	])
+  ])
 }
