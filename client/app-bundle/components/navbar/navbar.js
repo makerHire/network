@@ -8,11 +8,10 @@ exports.controller = function () {
 
 exports.view = function (ctrl) {
 	var links = [
-    {title: "Home", url: "/"},
     {title: "Outcomes", url: "/outcomes"},
-    {title: "Students", url: "/profile"}
+    {title: "Students", url: "/profile"},
+    {title: "Sign Out", url: "/signout"}
   ];
-	console.log('navbar-view')
 	return m("nav.teal.darken-1", [
 		m('.nav-wrapper', [
 			m("a[href='#']#brand-logo", "MakerHire", [

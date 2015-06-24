@@ -10,23 +10,28 @@ var Outcomes       = require('./views/outcomes/outcomes.js');
 var Progress       = require('./views/progress/progress.js');
 var Splash         = require('./views/splash/splash.js');
 
-// function signedOutView () {
-//   return m('.page', [
-//     m('h1', 'Welcome to the Learn App!'),
-//     m('p', 'Please sign in to access your course materials.'),
-//     m('a[href=/auth/makerpass/]', 'Sign In')
-//   ]);
-// };
-
 // TODO: Make sure pages can only be accessed when user is authorized
 
 // var goHome = m.route.papp('/')
+
+var checkAuth = function(authorization, componentsArr) {
+  //TODO: Check role of user and redirect correctly
+  if(authorization()){      
+    console.log('authorized')
+    return App.layout(componentsArr);
+  }else{
+    console.log('redirected')
+    return  m.component(Splash);
+  }
+};
+
+
 var routes = {
 
   '/': {
     controller: function () {
-      // Auth.authenticate()
       var ctrl = this;
+      ctrl.user = Auth.currentUser()
     },
     view: function (ctrl) {
       return  m.component(Splash)
@@ -36,33 +41,39 @@ var routes = {
   '/progress': {
     controller: function () {
       var ctrl = this;
+      ctrl.user = Auth.currentUser()
     },
     view: function (ctrl) {
-      return App.layout([
-        m.component(Progress)
-      ]);
+      return checkAuth(ctrl.user, m.component(Progress))
     }
   },
 
   '/profile': {
     controller: function () {
       var ctrl = this;
+      ctrl.user = Auth.currentUser();
     },
     view: function (ctrl) {
-      return App.layout([
-        m.component(Progress)
-      ]);
+      return checkAuth(ctrl.user, m.component(Progress))
     }
   },
 
-    '/outcomes': {
+  '/outcomes': {
     controller: function () {
       var ctrl = this;
+      ctrl.user = Auth.currentUser();
     },
     view: function (ctrl) {
-      return App.layout([
-        m.component(Outcomes)
-      ]);
+      return checkAuth(ctrl.user, m.component(Outcomes))
+    }
+  },
+
+  '/signout': {
+    controller: function () {
+      Auth.signOut();
+    },
+    view: function () {
+      return m.component(Splash)
     }
   }
 };

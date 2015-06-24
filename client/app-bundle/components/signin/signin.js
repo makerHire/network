@@ -11,9 +11,9 @@ exports.view = function (ctrl) {
     m('h1.center-align', 'Welcome to the Network'),
     m('p.center-align', 'Please sign in to access your future.'),
     m('.center-align', [
-      m('a[href=/auth/makerpass/]', [
+      m('a[href=/auth/makerpass/callback]', [
         m('button.btn', 'Sign In')
       ])
     ])  
-  ]);
+  ])
 }
