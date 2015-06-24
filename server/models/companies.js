@@ -20,8 +20,16 @@ var Companies = module.exports = {
     return Companies.update(attrs).catch(Companies.create.papp(attrs))
   },
 
+  // retrieve: function (callback,attrs) {
+  //   return db().select('*').where({id: attrs.id})
+  //   .then(function(rows){
+  //    return (rows.length === 0) ? callback({title:'companies WIll Be here!!!!'}) : callback(rows)
+  //   })
+  // },
+
   retrieveAll: function (callback) {
-    return db('companies').select('*')
+    var j = 'companies'
+    return db(j).select('*')
     .then(function(rows){
      return (rows.length === 0) ? callback({title:'companies WIll Be here!!!!'}) : callback(rows)
     })
