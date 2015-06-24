@@ -13,7 +13,7 @@ exports.view = function (ctrl) {
     {title: "Students", url: "/profile"}
   ];
 	console.log('navbar-view')
-	return m("nav", [
+	return m("nav.teal.darken-1", [
 		m('.nav-wrapper', [
 			m("a[href='#']#brand-logo", "MakerHire", [
 			m("ul#nav-mobile.right.hide-on-med-and-down", [

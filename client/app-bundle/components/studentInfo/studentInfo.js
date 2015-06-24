@@ -24,17 +24,15 @@ exports.controller = function () {
 
 exports.view = function (ctrl) {
   //TODO: Setup POST request to /me
-  console.log(ctrl.studentInfo().user.email);
-  console.log(ctrl.studentJobs());
-  return m('.row', [
-    m('.row', ctrl.studentInfo().user.name),
-    m('.row', ctrl.studentInfo().user.email),
-    m('.row', ctrl.studentInfo().user.status || 'Status'),
-    m('.row', ctrl.studentInfo().user.active || 'Active'),
-    m('.row', ctrl.studentInfo().user.school || 'School'),
-    m('.row', ctrl.studentInfo().user.company || 'Company'),
+  return m('.col.m3.s12', [
     m('.row', [
-      m('img[src=' + ctrl.studentInfo().user.avatar_url +']')
-    ])
+      m('img.responsive-img[src=' + ctrl.studentInfo().user.avatar_url +']')
+    ]),
+    m('.row', 'Name: ' + ctrl.studentInfo().user.name),
+    m('.row', 'Email: ' + ctrl.studentInfo().user.email),
+    m('.row', 'Status: ' + ctrl.studentInfo().user.status || 'Status'),
+    m('.row', 'Active: ' + ctrl.studentInfo().user.active || 'Active'),
+    m('.row', 'School: ' + ctrl.studentInfo().user.school || 'School'),
+    m('.row', 'Current Company: ' + ctrl.studentInfo().user.company || 'Company')
   ]);
 };

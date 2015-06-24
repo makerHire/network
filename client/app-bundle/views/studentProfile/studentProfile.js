@@ -13,12 +13,8 @@ exports.controller = function () {
 }
 
 exports.view = function (ctrl) {
-  return m('.profile', [
-    m.component(StudentInfo),
+  return m('.container', [
     m.component(NewApp),
-    m.component(PhoneScreen),
-    m.component(Phases),
-    m.component(Messaging),
-    m.component(OnsiteInterview),
+    m.component(StudentInfo)
   ]) 
 }
