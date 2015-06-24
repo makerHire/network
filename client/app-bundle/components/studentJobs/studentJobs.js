@@ -29,7 +29,7 @@ exports.view = function (ctrl) {
     m('h1.center-align', 'Pending Applications'),
     m('ul.collection', [
       ctrl.studentApps().map(function(app){
-        if(app.user_id === ctrl.studentInfo().uid){ 
+        console.log(app)
           return m('li.collection-item avatar', [
             m('img[src=' + ctrl.studentInfo().avatar_url + '].circle'),
             m('span.title', app.name),
@@ -37,7 +37,6 @@ exports.view = function (ctrl) {
             m('p', 'Active: ' + app.active),
             m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
           ])
-        }
       })
     ])
   ])

@@ -15,7 +15,7 @@ exports.mount = function (app) {
 
 
 	app.post('/API/users', function(req, res){
-		console.log(req.body)
+
 		if (!req.body) return res.sendStatus(400)
 		var newValues = User.updateOrCreate(req.body)
 		res.send(req.body)
