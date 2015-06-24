@@ -5,12 +5,12 @@ var Companies = module.exports = {
 
   create: function (attrs) {
     attrs.created_at = new Date()
-    return db('companies').insert(attrs).return(attrs)
+    return db(attrs.table).insert(attrs).return(attrs)
   },
 
   update: function (attrs) {
     attrs.updated_at = new Date()
-    return db('companies').update(attrs).where({ uid: attrs.uid })
+    return db(attrs.table).update(attrs.values).where({ uid: attrs.values.uid })
       .then(function(affectedCount) {
         return (affectedCount === 0) ? Promise.reject(new Error('not_found')) : attrs
       })
@@ -20,18 +20,10 @@ var Companies = module.exports = {
     return Companies.update(attrs).catch(Companies.create.papp(attrs))
   },
 
-  // retrieve: function (callback,attrs) {
-  //   return db().select('*').where({id: attrs.id})
-  //   .then(function(rows){
-  //    return (rows.length === 0) ? callback({title:'companies WIll Be here!!!!'}) : callback(rows)
-  //   })
-  // },
-
-  retrieveAll: function (callback) {
-    var j = 'companies'
-    return db(j).select('*')
+  retrieveAll: function (attrs, callback) {
+    return db(attrs.table).select('*')
     .then(function(rows){
-     return (rows.length === 0) ? callback({title:'companies WIll Be here!!!!'}) : callback(rows)
+     return (rows.length === 0) ? callback({title: attrs.table + 'WIll Be here!!!!'}) : callback(rows)
     })
   },
 
