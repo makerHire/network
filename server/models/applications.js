@@ -15,14 +15,18 @@ var Applications = module.exports = {
     return db('applications').insert(attrs).return(attrs)
   },
 
-
-
-  retrieveWithCompany: function (callback) {
+  retrieveWithCompany: function (user, callback) {
 
   return db.select('*').from('applications').join('companies', function() {
-    this.on('companies.id', '=', 'applications.company_id')}).join('titles',function(){ this.on('titles.id', '=', 'applications.title_id')})
+    this.on('companies.id', '=', 'applications.company_id')}).join('titles',
+      function(){ this.on('titles.id', '=', 'applications.title_id')})
     .then(function(rows){
-     return (rows.length === 0) ? callback({title:'Apps with companies will be here, joined'}) : callback(rows)
+      if(Array.isArray(rows)){
+      var filteredRows = rows.filter(function(obj){
+        return user.uid === obj.user_id;
+        })
+      }
+     return (rows.length === 0) ? callback({title:'Apps with companies will be here, joined'}) : callback(filteredRows)
   })
 },
 
