@@ -11,7 +11,6 @@ var Utils      = require('./utils')
 exports.mount = function (app) {
 
 	app.get('/API/general', function(req, res){
-		var Obj = req.body.desired
 		General.retrieveAll(function(x){res.send({Groups: x})
     })
   });
