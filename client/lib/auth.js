@@ -6,7 +6,7 @@ exports.currentUser = function () {
   // TODO: Cache for X amount of time
   return m.request({ method: 'GET', url: '/me' })
     .then(function (response) {
-      return response.user
+      return response.user;
     })
 }
 
