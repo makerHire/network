@@ -24,7 +24,7 @@ exports.view = function (ctrl) {
       ctrl.allApps()[1].map(function(app){
         if(app.phase === '1'){   
           return m('li.collection-item avatar', [
-            m('img[src=https://avatars.githubusercontent.com/u/5953350?v=3].circle'),
+            m('img[' + app.avatar_url + '].circle'),
             m('span.title', 'WILL BE NAME: ' + app.user_id),
             m('p', 'Title: ' + app.title),
             m('p', 'Company: ' + app.name),

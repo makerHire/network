@@ -18,7 +18,7 @@ exports.view = function (ctrl) {
   	m('.row', [
 	    m.component(StudentInfo),
 	  	m.component(StudentJobs),
-	    ]),
+    ]),
     m.component(NewApp)
   ]) 
 }
