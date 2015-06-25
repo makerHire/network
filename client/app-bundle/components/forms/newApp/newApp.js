@@ -1,5 +1,6 @@
 var m = require('mithril');
 
+
 exports.controller = function () {
   var ctrl = this;
   var newAppForm = {
