@@ -42,7 +42,7 @@ exports.view = function (ctrl) {
             m('span.title', app.name),
             m('p', 'Title: ' + app.title),
             m('p', 'Company: ' + app.company_name),
-            m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
+            // m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
           ])
         }
       })
@@ -56,7 +56,7 @@ exports.view = function (ctrl) {
             m('span.title', app.name),
             m('p', 'Title: ' + app.title),
             m('p', 'Company: ' + app.company_name),
-            m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
+            // m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
           ])
         }
       })
