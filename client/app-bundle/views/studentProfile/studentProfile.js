@@ -15,7 +15,7 @@ exports.controller = function () {
 exports.view = function (ctrl) {
   return m('.container', [
   	m.component(StudentJobs),
-    m.component(NewApp),
     m.component(StudentInfo)
+    m.component(NewApp),
   ]) 
 }
