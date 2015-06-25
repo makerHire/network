@@ -27,7 +27,7 @@ exports.view = function (ctrl) {
             m('img[src=' + app.avatar_url + '].circle'),
             m('span.title', app.name),
             m('p', 'Title: ' + app.title),
-            m('p', 'Company: ' + app.name),
+            m('p', 'Company: ' + app.company_name),
             // m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
           ])
         }
@@ -38,10 +38,10 @@ exports.view = function (ctrl) {
       ctrl.allApps()[2].map(function(app){
         if(app.phase === '2'){   
           return m('li.collection-item avatar', [
-            m('img[src=https://avatars.githubusercontent.com/u/5953350?v=3].circle'),
-            m('span.title', 'WILL BE NAME: ' + app.user_id),
+            m('img[src=' + app.avatar_url + '].circle'),
+            m('span.title', app.name),
             m('p', 'Title: ' + app.title),
-            m('p', 'Company: ' + app.name),
+            m('p', 'Company: ' + app.company_name),
             m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
           ])
         }
@@ -52,10 +52,10 @@ exports.view = function (ctrl) {
       ctrl.allApps()[3].map(function(app){
         if(app.phase === '3'){   
           return m('li.collection-item avatar', [
-            m('img[src=https://avatars.githubusercontent.com/u/5953350?v=3].circle'),
-            m('span.title', 'WILL BE NAME: ' + app.user_id),
+            m('img[src=' + app.avatar_url + '].circle'),
+            m('span.title', app.name),
             m('p', 'Title: ' + app.title),
-            m('p', 'Company: ' + app.name),
+            m('p', 'Company: ' + app.company_name),
             m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
           ])
         }
