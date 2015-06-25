@@ -6,18 +6,27 @@ exports.controller = function () {
   ctrl.studentInfo;
   ctrl.companies;
 
+  // var mHttp = function(method, url, promise, reqData) {
+  //   m.request({ method: method, url: url})
+  //     .then(promise)
+  // };
+  //TODO: Make work for post request and data - jh
+  // mHttp('GET', '/api/jobs', function(jobs) {
+  //     ctrl.studentJobs = m.prop();
+  //     return ctrl.studentJobs(jobs['Jobs']);
+  //   })
+
+  m.request({ method: 'GET', url: '/api/appswithcompanies'})
+    .then(function(applications) {
+      ctrl.studentApps = m.prop();
+      console.log(applications,'Applications GET')
+      return ctrl.studentApps(applications.Applications);
+    });
+
   m.request({ method: 'GET', url: '/me'})
     .then(function(info) {
       ctrl.studentInfo = m.prop();
-      console.log(info.user)
       return ctrl.studentInfo(info.user);
-    }).then(function(user){
-      m.request({ method: 'GET', url: '/api/appswithcompanies', data: user.uid})
-        .then(function(applications) {
-          ctrl.studentApps = m.prop();
-          console.log(applications,'Applications GET')
-          return ctrl.studentApps(applications.Applications);
-        });
     })
 
 
@@ -29,7 +38,6 @@ exports.view = function (ctrl) {
     m('h1.center-align', 'Pending Applications'),
     m('ul.collection', [
       ctrl.studentApps().map(function(app){
-        console.log(app)
           return m('li.collection-item avatar', [
             m('img[src=' + ctrl.studentInfo().avatar_url + '].circle'),
             m('span.title', app.name),
