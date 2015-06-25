@@ -1,5 +1,5 @@
 var m = require('mithril');
-var Underscore = require('underscore');
+
 
 exports.controller = function () {
   var ctrl = this;

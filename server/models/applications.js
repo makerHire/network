@@ -30,6 +30,17 @@ var Applications = module.exports = {
   })
 },
 
+
+retrieveAllWithCompany: function (callback) {
+
+  return db.select('*').from('applications').join('companies', function() {
+    this.on('companies.id', '=', 'applications.company_id')}).join('titles',
+      function(){ this.on('titles.id', '=', 'applications.title_id')})
+    .then(function(rows){
+     return (rows.length === 0) ? callback({title:'Apps with companies will be here, joined'}) : callback(rows)
+  })
+},
+
   retrieveAll: function (callback) {
     return db('applications').select('*')
     .then(function(rows){
