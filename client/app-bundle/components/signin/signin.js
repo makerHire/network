@@ -8,6 +8,9 @@ exports.controller = function () {
 
 exports.view = function (ctrl) {
   return m('div', [
+     m("head", [
+    m("link[href='./style.css'][rel=stylesheet]")
+  ]),
     m('h1.center-align', 'Welcome to the Network'),
     m('p.center-align', 'Please sign in to access your future.'),
     m('.center-align', [
