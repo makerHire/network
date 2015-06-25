@@ -4,14 +4,15 @@ exports.controller = function () {
   var ctrl = this;
   ctrl.allApps;
 
-  m.request({ method: 'GET', url: '/api/appswithcompanies'})
+  m.request({ method: 'GET', url: '/api/allApps'})
     .then(function(apps) {
       ctrl.allApps = m.prop({1:[],2:[],3:[]});
-
+      console.log(apps, 'APPS from server')
       apps.Applications.forEach(function(app){
         ctrl.allApps()[app.phase].push(app)
       })
-      console.log(ctrl.allApps(), 'asdfsdf')
+
+      console.log(ctrl.allApps()[1], 'asdfsdf')
       return ctrl.allApps();
     });
 }
