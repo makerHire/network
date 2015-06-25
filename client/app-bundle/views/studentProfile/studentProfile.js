@@ -6,7 +6,7 @@ var OnsiteInterview = require('../../components/forms/onsiteInterview/onsiteInte
 var Phases        	= require('../../components/phases/phases.js');
 var PhoneScreen     = require('../../components/forms/phoneScreen/phoneScreen.js');
 var StudentInfo   	= require('../../components/studentInfo/studentInfo.js');
-
+var StudentJobs     = require('../../components/studentJobs/studentJobs.js')
 
 exports.controller = function () {
   var ctrl = this;
@@ -14,6 +14,7 @@ exports.controller = function () {
 
 exports.view = function (ctrl) {
   return m('.container', [
+  	m.component(StudentJobs),
     m.component(NewApp),
     m.component(StudentInfo)
   ]) 
