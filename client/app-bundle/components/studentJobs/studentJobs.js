@@ -42,8 +42,8 @@ exports.view = function (ctrl) {
             m('img[src=' + ctrl.studentInfo().avatar_url + '].circle'),
             m('span.title', app.name),
             m('p', 'Title: ' + app.title),
-            m('p', 'Active: ' + app.active),
-            m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
+            // m('p', 'Active: ' + app.active),
+            // m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
           ])
       })
     ])

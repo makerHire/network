@@ -30,9 +30,10 @@ exports.view = function (ctrl) {
     ]),
     m('div', 'Name: ' + ctrl.studentInfo().user.name),
     m('div', 'Email: ' + ctrl.studentInfo().user.email),
-    m('div', 'Status: ' + ctrl.studentInfo().user.status || 'Status'),
-    m('div', 'Active: ' + ctrl.studentInfo().user.active || 'Active'),
-    m('div', 'School: ' + ctrl.studentInfo().user.school || 'School'),
-    m('div', 'Current Company: ' + ctrl.studentInfo().user.company || 'Company')
+    // m('div', 'Status: ' + ctrl.studentInfo().user.status || 'Status'),
+    // m('div', 'Active: ' + ctrl.studentInfo().user.active || 'Active'),
+    // m('div', 'School: ' + ctrl.studentInfo().user.school || 'School'),
+    m('div', 'School: MakerSquare'),
+    // m('div', 'Current Company: ' + ctrl.studentInfo().user.company || 'Company')
   ]);
 };

@@ -28,7 +28,7 @@ exports.view = function (ctrl) {
             m('span.title', 'WILL BE NAME: ' + app.user_id),
             m('p', 'Title: ' + app.title),
             m('p', 'Company: ' + app.name),
-            m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
+            // m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
           ])
         }
       })
