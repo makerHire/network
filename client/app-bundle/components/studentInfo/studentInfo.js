@@ -25,14 +25,14 @@ exports.controller = function () {
 exports.view = function (ctrl) {
   //TODO: Setup POST request to /me
   return m('.col.m3.s12', [
-    m('.row', [
+    m('.div.center-align', [
       m('img.responsive-img[src=' + ctrl.studentInfo().user.avatar_url +']')
     ]),
-    m('.row', 'Name: ' + ctrl.studentInfo().user.name),
-    m('.row', 'Email: ' + ctrl.studentInfo().user.email),
-    m('.row', 'Status: ' + ctrl.studentInfo().user.status || 'Status'),
-    m('.row', 'Active: ' + ctrl.studentInfo().user.active || 'Active'),
-    m('.row', 'School: ' + ctrl.studentInfo().user.school || 'School'),
-    m('.row', 'Current Company: ' + ctrl.studentInfo().user.company || 'Company')
+    m('div', 'Name: ' + ctrl.studentInfo().user.name),
+    m('div', 'Email: ' + ctrl.studentInfo().user.email),
+    m('div', 'Status: ' + ctrl.studentInfo().user.status || 'Status'),
+    m('div', 'Active: ' + ctrl.studentInfo().user.active || 'Active'),
+    m('div', 'School: ' + ctrl.studentInfo().user.school || 'School'),
+    m('div', 'Current Company: ' + ctrl.studentInfo().user.company || 'Company')
   ]);
 };
