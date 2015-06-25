@@ -16,7 +16,7 @@ exports.mount = function (app) {
 
 
 	app.post('/API/jobs', function(req, res){
-		console.log(req.body)
+		console.log(req.body, "jobsAPI")
 		if (!req.body) return res.sendStatus(400)
 			var newValues = Jobs.updateOrCreate(req.body)
 		res.send(req.body)
