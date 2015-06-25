@@ -10,9 +10,10 @@ exports.controller = function() {}
 exports.view = function(ctrl) {
 
   return m('.container', [
-    m.component(OutcomesGraph),
-    m.component(Phases),
-    m.component(Messaging),
+    m('h1.center-align', 'Student Outcomes'),
+    // m.component(OutcomesGraph),
+    // m.component(Phases),
+    // m.component(Messaging),
     m.component(CurrentApps)
   ])
 }
