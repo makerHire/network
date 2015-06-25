@@ -4,7 +4,6 @@ var m = require('mithril');
 exports.controller = function () {
   var ctrl = this;
   var newAppForm = {
-    id: '',
     phase: '',
     date_applied: '',
     contact_id: '',
