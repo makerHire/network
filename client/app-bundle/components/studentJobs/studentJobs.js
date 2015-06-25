@@ -40,7 +40,7 @@ exports.view = function (ctrl) {
       ctrl.studentApps().map(function(app){
           return m('li.collection-item avatar', [
             m('img[src=' + ctrl.studentInfo().avatar_url + '].circle'),
-            m('span.title', app.name),
+            m('span.title', app.company_name),
             m('p', 'Title: ' + app.title),
             // m('p', 'Active: ' + app.active),
             // m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
