@@ -35,7 +35,9 @@ retrieveAllWithCompany: function (callback) {
 
   return db.select('*').from('applications').join('companies', function() {
     this.on('companies.id', '=', 'applications.company_id')}).join('titles',
-      function(){ this.on('titles.id', '=', 'applications.title_id')})
+      function(){ this.on('titles.id', '=', 'applications.title_id')}).join('users', function() {
+        this.on('users.uid', '=', 'applications.user_id')
+      })
     .then(function(rows){
      return (rows.length === 0) ? callback({title:'Apps with companies will be here, joined'}) : callback(rows)
   })
