@@ -14,8 +14,11 @@ exports.controller = function () {
 
 exports.view = function (ctrl) {
   return m('.container', [
-  	m.component(StudentJobs),
-    m.component(StudentInfo)
-    m.component(NewApp),
+  	m('.row'),
+  	m('.row', [
+	    m.component(StudentInfo),
+	  	m.component(StudentJobs),
+	    ]),
+    m.component(NewApp)
   ]) 
 }

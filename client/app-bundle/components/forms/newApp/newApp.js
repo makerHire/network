@@ -1,5 +1,4 @@
 var m = require('mithril');
-var Underscore = require('underscore');
 
 exports.controller = function () {
   var ctrl = this;
@@ -106,7 +105,7 @@ exports.view = function (ctrl) {
           m('label', "contact")
         ]),
       ]),
-      m('.row', [
+      m('.row.center-align', [
         // m('button.btn.waves-effect.waves-light[type=button]', 'Submit', {onclick: function() {postApp}},
         m('button.btn.waves-effect.waves-light[type=button]', { onclick: ctrl.postApp }, 'Submit', [
           //POST to database

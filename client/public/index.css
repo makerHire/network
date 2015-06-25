@@ -1,0 +1,32 @@
+.buffer{
+	height: 20px;
+
+	display: block;
+}
+
+.profile3{
+/*	height: 30%;
+	width: 30%;*/
+	/*height: 30%;*/
+	border: 1px black solid;
+}
+
+.rowThird{
+	height: 33%;
+}
+
+/*body{
+	background-image: url("/images/image1.jpg");
+	background-size: 100%;
+}*/
+
+#gh{
+	background-color: white;
+	color: black;
+	opacity: 0.1;
+	border-radius: 10px;
+}
+
+#gh2{
+	background-image: url("/images/image1.jpg");
+}
