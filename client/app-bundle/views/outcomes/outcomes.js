@@ -5,15 +5,21 @@ var OutcomesGraph  = require('../../components/outcomesGraph/outcomesGraph.js')
 var Messaging      = require('../../components/messaging/messaging.js')
 var CurrentApps        = require('../../components/currentApps/currentApps.js')
 
-exports.controller = function() {}
+//Models
+var allApps = require('../../models/allApps.model.js')
+
+exports.controller = function () {
+  allApps.fetch()
+}
 
 exports.view = function(ctrl) {
+  var apps = allApps.all()
 
   return m('.container', [
     m('h1.center-align', 'Student Outcomes'),
     // m.component(OutcomesGraph),
     // m.component(Phases),
     // m.component(Messaging),
-    m.component(CurrentApps)
+    m.component(CurrentApps, {apps: apps})
   ])
 }
