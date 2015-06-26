@@ -27,11 +27,17 @@ exports.mount = function (app) {
   });
 
 
+
+  app.get('/API/applications/:id', function(req, res){
+    if (!req.body) return res.sendStatus(400)
+    Applications.retrieveOne(function(x){res.send({Applications: x, Params: req.params.id})}, req.params.id
+  )});
+
+
   app.get('/API/allApps', function(req,res){
     if (!req.body) return res.sendStatus(400);
       Applications.retrieveAllWithCompany(function(x){res.send({Applications: x})
     })
   });
-
 }
 

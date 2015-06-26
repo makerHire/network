@@ -22,5 +22,11 @@ exports.mount = function (app) {
 		var newValues = Companies.updateOrCreate(req.body)
 		res.send(req.body)
 	});
+
+
+	app.get('/API/companies/:id', function(req, res){
+		Companies.retrieveOne(function(x){res.send({Companies: x, Params: req.params})}, req.params.id
+    )
+  });
 }
 
