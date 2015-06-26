@@ -30,7 +30,6 @@ var Applications = module.exports = {
   })
 },
 
-
 retrieveAllWithCompany: function (callback) {
 
   return db.select('*').from('applications').join('companies', function() {
@@ -60,9 +59,18 @@ retrieveAllWithCompany: function (callback) {
   },
 
   retrieveOne: function(callback, id){
-    return db('applications').select('*').where( {id: id})
+    return db('applications').select('*').join('companies', function() {
+    this.on('companies.id', '=', 'applications.company_id')}).join('titles',
+      function(){ this.on('titles.id', '=', 'applications.title_id')}).join('users', function() {
+        this.on('users.uid', '=', 'applications.user_id')
+      })
     .then(function(row){
-     return callback(row);
+      if(Array.isArray(row)){
+      var filteredRows = row.filter(function(obj){
+        return id === obj.user_id;
+        })
+      }
+     return callback(filteredRows);
     })
   },
 
