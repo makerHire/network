@@ -4,12 +4,11 @@ var StudentApps = require('../../models/studentApps.js')
 
 exports.controller = function () {
   StudentApps.fetchApps();
-  StudentApps.fetchAutocomplete();
   StudentApps.fetchInfo();
 };
 
 
-exports.view = function (ctrl) {
+exports.view = function () {
   var modelData = StudentApps.all()
   var apps = modelData['apps'];
   var autocomplete = modelData['autocomplete'];
