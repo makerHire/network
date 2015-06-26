@@ -1,27 +1,19 @@
 var m = require('mithril');
 
+var allApps = require('../../models/allApps.js')
+
 exports.controller = function () {
-  var ctrl = this;
-  ctrl.allApps;
-
-  m.request({ method: 'GET', url: '/api/allApps'})
-    .then(function(apps) {
-      ctrl.allApps = m.prop({1:[],2:[],3:[]});
-      console.log(apps, 'APPS from server')
-      apps.Applications.forEach(function(app){
-        ctrl.allApps()[app.phase].push(app)
-      })
-
-      console.log(ctrl.allApps()[1], 'asdfsdf')
-      return ctrl.allApps();
-    });
+  // var ctrl = this;
+  allApps.fetch()
 }
 
 exports.view = function (ctrl) {
+  var apps = allApps.all()
+
   return m('.col.m9.s12', [
     m('h1.center-align', 'Phase I'),
     m('ul.collection', [
-      ctrl.allApps()[1].map(function(app){
+      apps[1].map(function(app){
         if(app.phase === '1'){   
           return m('li.collection-item avatar', [
             m('img[src=' + app.avatar_url + '].circle'),
@@ -35,7 +27,7 @@ exports.view = function (ctrl) {
     ]),
     m('h1.center-align', 'Phase II'),
     m('ul.collection', [
-      ctrl.allApps()[2].map(function(app){
+      apps[2].map(function(app){
         if(app.phase === '2'){   
           return m('li.collection-item avatar', [
             m('img[src=' + app.avatar_url + '].circle'),
@@ -49,7 +41,7 @@ exports.view = function (ctrl) {
     ]),
     m('h1.center-align', 'Phase III'),
     m('ul.collection', [
-      ctrl.allApps()[3].map(function(app){
+      apps[3].map(function(app){
         if(app.phase === '3'){   
           return m('li.collection-item avatar', [
             m('img[src=' + app.avatar_url + '].circle'),

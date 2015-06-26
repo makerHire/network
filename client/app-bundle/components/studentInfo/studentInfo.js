@@ -14,6 +14,8 @@ exports.controller = function () {
       return ctrl.studentInfo(info);
     });
 
+
+  //FIXME: Wrong endpoint?
   m.request({ method: 'GET', url: '/api/jobs'})
     .then(function(jobs) {
       ctrl.studentJobs = m.prop();
