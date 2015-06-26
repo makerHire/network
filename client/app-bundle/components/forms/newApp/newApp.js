@@ -1,7 +1,6 @@
 var m = require('mithril');
 var StudentJobs = require('../../studentJobs/studentJobs.js')
 
-
 exports.controller = function () {
   var ctrl = this;
   var newAppForm = {
@@ -18,6 +17,7 @@ exports.controller = function () {
 
 
   };
+
 m.request({
       method: 'GET',
       url: "/me/"
@@ -37,7 +37,7 @@ m.request({
         data: ctrl.newAppForm,
         }).then(function(data) {
           console.log(data, 'postApp');
-          m.redraw.strategy('all')
+          // m.redraw.strategy('all')
         })
   };
 
