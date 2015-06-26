@@ -6,11 +6,18 @@ var studentApps = module.exports = {
   studentInfo: null,
 
   // All open applications for all students
-  fetchApps: function() {
-    m.request({ method: 'GET', url: '/api/appsWithCompanies'})
+  fetchApps: function(ctrl) {
+    if(ctrl.thisUserId){
+      m.request({ method: 'GET', url: '/api/applications/' + ctrl.thisUserId})
       .then(function(applications) {
         studentApps.apps = applications.Applications;
       });
+    } else {
+      m.request({ method: 'GET', url: '/api/appswithcompanies/'})
+      .then(function(applications) {
+        studentApps.apps = applications.Applications;
+      });
+    }
   },
 
   all: function() {

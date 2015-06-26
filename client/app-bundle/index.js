@@ -39,12 +39,26 @@ var routes = {
   },
 
   '/profile': {
-    controller: function () {
+    controller: function (a) {
       var ctrl = this;
+
       ctrl.user = Auth.currentUser();
     },
     view: function (ctrl) {
-      return checkAuth(ctrl.user, m.component(StudentProfile))
+      console.log( 'js', ctrl)
+      return checkAuth(ctrl.user, m.component(StudentProfile, {obj: '6be463f5fad5'}))
+    }
+  },
+
+  '/profile/:id': {
+    controller: function () {
+      var ctrl = this;
+      ctrl.user = Auth.currentUser();
+      ctrl.thisUserId = m.route.param('id')
+    },
+    view: function (ctrl) {
+
+      return checkAuth(ctrl.user, m.component(StudentProfile, ctrl))
     }
   },
 
