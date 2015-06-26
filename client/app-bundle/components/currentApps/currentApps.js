@@ -1,18 +1,11 @@
 var m = require('mithril');
 
-var allApps = require('../../models/allApps.model.js')
-
-exports.controller = function () {
-  allApps.fetch()
-}
-
-exports.view = function (ctrl) {
-  var apps = allApps.all()
+exports.view = function (ctrl, options) {
 
   return m('.col.m9.s12', [
     m('h1.center-align', 'Phase I'),
     m('ul.collection', [
-      apps[1].map(function(app){
+      options['apps'][1].map(function(app){
         if(app.phase === '1'){   
           return m('li.collection-item avatar', [
             m('img[src=' + app.avatar_url + '].circle'),
@@ -26,7 +19,7 @@ exports.view = function (ctrl) {
     ]),
     m('h1.center-align', 'Phase II'),
     m('ul.collection', [
-      apps[2].map(function(app){
+      options['apps'][2].map(function(app){
         if(app.phase === '2'){   
           return m('li.collection-item avatar', [
             m('img[src=' + app.avatar_url + '].circle'),
@@ -40,7 +33,7 @@ exports.view = function (ctrl) {
     ]),
     m('h1.center-align', 'Phase III'),
     m('ul.collection', [
-      apps[3].map(function(app){
+      options['apps'][3].map(function(app){
         if(app.phase === '3'){   
           return m('li.collection-item avatar', [
             m('img[src=' + app.avatar_url + '].circle'),

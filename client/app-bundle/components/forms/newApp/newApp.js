@@ -1,5 +1,4 @@
 var m = require('mithril');
-var StudentJobs = require('../../studentJobs/studentJobs.js')
 
 exports.controller = function () {
   var ctrl = this;
@@ -13,12 +12,9 @@ exports.controller = function () {
     // location: '',
     title_id: '',
     company_id: ''
-
-
-
   };
 
-m.request({
+    m.request({
       method: 'GET',
       url: "/me/"
     }).then(function(req){
