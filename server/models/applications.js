@@ -58,8 +58,15 @@ retrieveAllWithCompany: function (callback) {
         return (affectedCount === 0) ? Promise.reject(new Error('not_found')) : attrs
       })
   },
+
+  retrieveOne: function(callback, id){
+    return db('applications').select('*').where( {id: id})
+    .then(function(row){
+     return callback(row);
+    })
+  },
+
   updateOrCreate: function (attrs) {
     return Applications.update(attrs).catch(Applications.create.papp(attrs))
   }
-
 }

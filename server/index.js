@@ -25,6 +25,9 @@ app.use(session({
   signed: true
 }))
 
+//enable express router resource which facilitate shared endpoint routing
+var resource = require('express-resource');
+
 
 // bodyparser for endpoint conversion of JSON objects
 var bodyParser = require('body-parser')

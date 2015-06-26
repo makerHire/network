@@ -27,6 +27,14 @@ var contacts = module.exports = {
     })
   },
 
+
+  retrieveOne: function(callback, id){
+    return db('contacts').select('*').where( {id: id})
+    .then(function(row){
+     return callback(row);
+    })
+  },
+
   destroy: function (uid) {
     return db('contacts').where({ uid: uid }).delete()
   }

@@ -6,8 +6,8 @@
   "directories": {
     "test": "test"
   },
-  "engines":{
-    "node":"0.12.4"
+  "engines": {
+    "node": "0.12.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,6 +25,7 @@
     "browserify-middleware": "^6.0.0",
     "cookie-session": "^1.1.0",
     "express": "^4.12.4",
+    "express-resource": "^1.0.0",
     "glob": "^5.0.10",
     "gulp": "^3.9.0",
     "jquery": "^2.1.4",

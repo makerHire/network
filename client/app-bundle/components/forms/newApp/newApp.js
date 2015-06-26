@@ -22,7 +22,6 @@ m.request({
       method: 'GET',
       url: "/me/"
     }).then(function(req){
-      console.log(req.user.uid);
       ctrl.newAppForm = m.prop(newAppForm);
       ctrl.newAppForm().user_id = req.user.uid 
       console.log(ctrl.newAppForm(), 'newAppForm');
@@ -66,7 +65,7 @@ var binds = function(data) {
 exports.view = function (ctrl) {
   return m('.row', binds(ctrl.newAppForm()), [
     m('.row', [
-      m('h3.center-align', 'Initial Application')
+      m('h3.center-align', 'Add Application')
     ]),
     m('form.col.s12', [
       m('.row', [
