@@ -9,7 +9,6 @@ var StudentProfile = require('./views/studentProfile/studentProfile.js');
 var Outcomes       = require('./views/outcomes/outcomes.js');
 var Progress       = require('./views/progress/progress.js');
 var Splash         = require('./views/splash/splash.js');
-var Fuzzy          = require('../../AutocompleteInput.js');
 
 // TODO: Make sure pages can only be accessed when user is authorized
 
