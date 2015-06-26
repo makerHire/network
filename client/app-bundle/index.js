@@ -46,7 +46,7 @@ var routes = {
     },
     view: function (ctrl) {
       console.log( 'js', ctrl)
-      return checkAuth(ctrl.user, m.component(StudentProfile, {obj: '6be463f5fad5'}))
+      return checkAuth(ctrl.user, m.component(StudentProfile))
     }
   },
 
