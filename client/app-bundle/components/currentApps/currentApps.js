@@ -3,7 +3,6 @@ var m = require('mithril');
 var allApps = require('../../models/allApps.js')
 
 exports.controller = function () {
-  // var ctrl = this;
   allApps.fetch()
 }
 
