@@ -1,6 +1,6 @@
 var m = require('mithril');
 
-var allApps = require('../../models/allApps.js')
+var allApps = require('../../models/allApps.model.js')
 
 exports.controller = function () {
   allApps.fetch()
