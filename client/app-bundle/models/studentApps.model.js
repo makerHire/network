@@ -3,7 +3,6 @@ var m = require('mithril');
 var studentApps = module.exports = {
 
   apps: null,
-  autocomplete: null,
   studentInfo: null,
 
   // All open applications for all students
@@ -17,7 +16,6 @@ var studentApps = module.exports = {
   all: function() {
     return {
       apps: studentApps.apps,
-      autocomplete: studentApps.autocomplete,
       studentInfo: studentApps.studentInfo
     };
   },
@@ -29,20 +27,5 @@ var studentApps = module.exports = {
         studentApps.studentInfo = userInfo.user;
       })
   },
-
-  // List of all companies all students has applied for
-  fetchAutocomplete: function() {
-    m.request({ method: 'GET', url: "/API/companies/" })
-      .then(function(companies) {
-        console.log(companies,'in helper')
-        studentApps.autocomplete = companies.Companies;
-      });
-  },
-
-//POST requests
-
-  postNewApplication: function(applicationFormData) {
-    m.request({ method: 'POST', url: "/API/applications/", data: applicationFormData})
-  }
 
 };
