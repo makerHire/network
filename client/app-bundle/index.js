@@ -9,6 +9,7 @@ var StudentProfile = require('./views/studentProfile/studentProfile.js');
 var Outcomes       = require('./views/outcomes/outcomes.js');
 var Progress       = require('./views/progress/progress.js');
 var Splash         = require('./views/splash/splash.js');
+var Fuzzy          = require('../../AutocompleteInput.js');
 
 // TODO: Make sure pages can only be accessed when user is authorized
 
@@ -55,6 +56,17 @@ var routes = {
     },
     view: function (ctrl) {
       return checkAuth(ctrl.user, m.component(StudentProfile))
+    }
+  },
+
+  '/fuzzy': {
+    controller: function () {
+      var ctrl = this;
+      ctrl.user = Auth.currentUser();
+      
+    },
+    view: function (ctrl) {
+      return checkAuth(ctrl.user, m.component(Fuzzy))
     }
   },
 
