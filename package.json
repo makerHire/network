@@ -26,6 +26,7 @@
     "cookie-session": "^1.1.0",
     "express": "^4.12.4",
     "express-resource": "^1.0.0",
+    "fuzzysearch-js": "^0.1.1",
     "glob": "^5.0.10",
     "gulp": "^3.9.0",
     "jquery": "^2.1.4",

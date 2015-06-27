@@ -30,6 +30,7 @@ var Titles = module.exports = {
         return (affectedCount === 0) ? Promise.reject(new Error('not_found')) : attrs
       })
   },
+  
   updateOrCreate: function (attrs) {
     return Titles.update(attrs).catch(Titles.create.papp(attrs))
   }

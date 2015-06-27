@@ -7,9 +7,10 @@ exports.view = function (ctrl, options) {
     m('ul.collection', [
       options['apps'][1].map(function(app){
         if(app.phase === '1'){   
+          console.log(app)
           return m('li.collection-item avatar', [
             m('img[src=' + app.avatar_url + '].circle'),
-            m('span.title', app.name),
+            m('a.title', {href: '/profile/'+ app.uid, config: m.route} , app.name),
             m('p', 'Title: ' + app.title),
             m('p', 'Company: ' + app.company_name),
             // m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
@@ -23,7 +24,7 @@ exports.view = function (ctrl, options) {
         if(app.phase === '2'){   
           return m('li.collection-item avatar', [
             m('img[src=' + app.avatar_url + '].circle'),
-            m('span.title', app.name),
+            m('a.title', {href: '/profile/'+ app.uid, config: m.route} , app.name),
             m('p', 'Title: ' + app.title),
             m('p', 'Company: ' + app.company_name),
             // m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
@@ -37,7 +38,7 @@ exports.view = function (ctrl, options) {
         if(app.phase === '3'){   
           return m('li.collection-item avatar', [
             m('img[src=' + app.avatar_url + '].circle'),
-            m('span.title', app.name),
+            m('a.title', {href: '/profile/'+ app.uid, config: m.route} , app.name),
             m('p', 'Title: ' + app.title),
             m('p', 'Company: ' + app.company_name),
             // m('a.waves-effect.waves-light.secondary-content.btn[href=#]', 'update')
